@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+spec:
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+  selector:
+    app: postgres
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:9-alpine
+        imagePullPolicy: "IfNotPresent"
+        env:
+        - name: POSTGRES_DB
+          value: wiki
+        - name: POSTGRES_USER
+          value: wikiUser
+        - name: POSTGRES_PASSWORD
+          value: "54321"
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgredb-storage
+      volumes:
+      - name: postgredb-storage
+        persistentVolumeClaim:
+          claimName: postgres-pv-claim
