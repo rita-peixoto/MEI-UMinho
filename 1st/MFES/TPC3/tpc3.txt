@@ -1,0 +1,24 @@
+	http://alloy4fun.inesctec.pt/mrx6djiCb5DH5RbRT
+
+  	//check one  
+  	all t : Tree , h,h1 : Hash, n : Name | (t->h1->n in objects and t->h->n in objects) implies (h = h1)  
+  
+  	
+  
+  	//check two  
+  	all o , o1 : Object , h : Hash | o->h in hash and o1->h in hash implies o=o1
+   
+  
+  	//check three  
+  	all t : Tree , h : Hash, n : Name | h->n in t.objects implies (one t1 : Tree | t1->h in hash) or (one b : Blob | b->h in hash) 
+	all c : Commit, h : Hash | (c->h in tree implies (one t : Tree | t->h in hash)) and (c->h in parent implies (one c1 : Commit | c1->h in hash and c!=c1))
+
+
+	//check four
+	all c : Commit | c not in c.^(parent.~hash)
+	all t : Tree | t not in t.^(hash.~(objects.Name))   
+
+
+	//check five
+	all c, c1 : Commit | (c.tree = c1.tree and c.parent = c1.parent) implies c = c1
+	all t, t1 : Tree | t.objects = t1.objects iff t = t1
