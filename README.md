@@ -23,7 +23,7 @@ Repository containing all projects developed during this course.
 
 #### → Distributed Systems
 
-(20/20, 20/20, ?/20) [Fault Tolerance]()
+(20/20, 20/20, ?/20) [Fault Tolerance](https://github.com/rita-peixoto/MEI-UMinho/tree/main/2nd/TF)
 
 (?/20) [Large Scale Distributed Systems](https://github.com/rita-peixoto/MEI-UMinho/tree/main/2nd/SDGE-PSD)
 
