@@ -21,11 +21,11 @@ Repository containing all projects developed during this course.
 
 ### 2nd semester
 
-## Distributed Systems
+#### Distributed Systems
 
 (16/20) []()
 
-## Knowledge Engineering
+#### Knowledge Engineering
 
 ## 🎓 2nd year (2022/2023)
 
