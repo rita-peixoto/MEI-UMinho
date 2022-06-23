@@ -23,9 +23,19 @@ Repository containing all projects developed during this course.
 
 #### → Distributed Systems
 
-(16/20) []()
+(20/20, 20/20, ?/20) [Fault Tolerance]()
+
+() [Large Scale Distributed Systems]()
+
+() [Distributed Systems Paradigms]()
 
 #### → Knowledge Engineering
+
+() [Data Mining]()
+
+() [Inteligent Analysis of Big Data Systems]()
+
+() [NoSQL Databases]()
 
 ## 🎓 2nd year (2022/2023)
 
