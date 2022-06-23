@@ -6,9 +6,9 @@ Deployment of wiki-js using Google Cloud Platform.
 
 **Grade**: 15 out of 20
 
-### Contributor:
+### Contributors:
 - [Rita Peixoto](https://github.com/rita-peixoto)
 - [Luís Pinto](https://github.com/L-Pinto)
-- [Carlos Freitas]
+- Carlos Freitas
 - [Luísa Carneiro](https://github.com/Analucar)
 - [Francisco Peixoto](https://github.com/eramsodoiseuros)
