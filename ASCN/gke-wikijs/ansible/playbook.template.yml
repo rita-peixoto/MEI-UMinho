@@ -1,0 +1,18 @@
+# Run me: ansible-playbook -vv --extra-vars cluster_state=[absent|present] playbook.yml
+# Reference: https://docs.ansible.com/ansible/latest/scenario_guides/guide_gce.html
+
+---
+
+- name: Create GKE Cluster using Ansible GCP Library
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    gcp_project: ${GCP_PROJECT_NAME}
+    gcp_cred_kind: serviceaccount
+    gcp_cred_file: ${SERVICE_ACCOUNT_PRIVATE_KEY_JSON}
+    gcp_zone: us-central1-a
+    gcp_region: us-central1
+
+  roles:
+    - gke-test

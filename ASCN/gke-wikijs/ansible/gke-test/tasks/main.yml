@@ -1,0 +1,67 @@
+# google.cloud.gcp_container_cluster docs: https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_container_cluster_module.html
+# google.cloud.gcp_container_node_pool docs: https://docs.ansible.com/ansible/latest/collections/google/cloud/gcp_container_node_pool_module.html
+
+---
+
+- name: "Setting cluster config variables"
+  set_fact:
+    initial_node_count: 3
+    initial_cluster_version: "1.19"
+
+- name: "Create a GKE cluster"
+  google.cloud.gcp_container_cluster:
+    name: wikijs-cluster
+    initial_node_count: "{{ initial_node_count }}"
+    initial_cluster_version: "{{ initial_cluster_version }}"
+    location: "{{ gcp_zone }}"
+    project: "{{ gcp_project }}"
+    release_channel:
+      channel: "UNSPECIFIED"
+    ip_allocation_policy:
+      use_ip_aliases: "yes"
+    default_max_pods_constraint:
+      max_pods_per_node: "110"
+    addons_config:
+      horizontal_pod_autoscaling:
+        disabled: "no"
+      http_load_balancing:
+        disabled: "no"
+    #network: "projects/{{ gcp_project }}/global/networks/opsnet"
+    #subnetwork: "projects/{{ gcp_project }}/regions/{{ gcp_region }}/subnetworks/opsnet"
+    auth_kind: "{{ gcp_cred_kind }}"
+    service_account_file: "{{ gcp_cred_file }}"
+    state: "{{ cluster_state }}"
+  register: cluster
+
+- name: "Create a node pool for the GKE cluster"
+  google.cloud.gcp_container_node_pool:
+    name: nodes
+    initial_node_count: "{{ initial_node_count }}"
+    cluster: "{{ cluster }}"
+    location: "{{ gcp_zone }}"
+    project: "{{ gcp_project }}"
+    config:
+      machine_type: n1-standard-4
+      image_type: "COS"
+      disk_size_gb: 10
+      oauth_scopes:
+        - "https://www.googleapis.com/auth/devstorage.read_only"
+        - "https://www.googleapis.com/auth/logging.write"
+        - "https://www.googleapis.com/auth/monitoring"
+        - "https://www.googleapis.com/auth/servicecontrol"
+        - "https://www.googleapis.com/auth/service.management.readonly"
+        - "https://www.googleapis.com/auth/trace.append"
+    autoscaling:
+      enabled: "yes"
+      min_node_count: "1"
+      max_node_count: "{{ initial_node_count }}"
+    management:
+      auto_repair: "yes"
+      auto_upgrade: "yes"
+    auth_kind: "{{ gcp_cred_kind }}"
+    service_account_file: "{{ gcp_cred_file }}"
+    state: "{{ cluster_state }}"
+
+- name: "Connect to cluster (update kubeconfig)"
+  shell: "gcloud container clusters get-credentials {{ cluster.name }} --zone {{ gcp_zone }} --project {{ gcp_project }}"
+  when: cluster_state == "present"
