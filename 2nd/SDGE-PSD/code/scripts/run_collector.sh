@@ -1,0 +1,1 @@
+erl -pa out/default/lib/chumak/ebin  out/default/lib/collector/ebin -eval "collector:start(${1:-"\"test/devices10.txt\""})"

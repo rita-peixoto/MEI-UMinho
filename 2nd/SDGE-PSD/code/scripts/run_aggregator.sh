@@ -1,0 +1,1 @@
+java -cp src/aggregator:lib/jeromq-0.5.2.jar src/aggregator/Aggregator.java

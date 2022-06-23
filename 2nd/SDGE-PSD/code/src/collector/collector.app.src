@@ -1,0 +1,14 @@
+{application, collector,
+  [{description, "IoT Event Collector"},
+    {vsn, "1.0.0"},
+    {registered, []},
+    {mod, {collector, []}},
+    {applications, [
+      kernel,
+      stdlib,
+      chumak]
+    },
+    {env, []},
+    {modules, []},
+    {links, []}
+  ]}.
