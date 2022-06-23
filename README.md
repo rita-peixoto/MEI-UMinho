@@ -25,17 +25,17 @@ Repository containing all projects developed during this course.
 
 (20/20, 20/20, ?/20) [Fault Tolerance]()
 
-() [Large Scale Distributed Systems]()
+(?/20) [Large Scale Distributed Systems](https://github.com/rita-peixoto/MEI-UMinho/tree/main/2nd/SDGE-PSD)
 
-() [Distributed Systems Paradigms]()
+(?/20) [Distributed Systems Paradigms](https://github.com/rita-peixoto/MEI-UMinho/tree/main/2nd/SDGE-PSD)
 
 #### → Knowledge Engineering
 
-() [Data Mining]()
+(15/20) [Data Mining]()
 
-() [Inteligent Analysis of Big Data Systems]()
+(?/20) [Inteligent Analysis of Big Data Systems]()
 
-() [NoSQL Databases]()
+(?/20) [NoSQL Databases]()
 
 ## 🎓 2nd year (2022/2023)
 
