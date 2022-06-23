@@ -1,6 +1,6 @@
 ###  Parallel Computing
 
-Implementation of bucket sort algorithm.
+Implementation of bucket sort algorithm (parallel and sequential versions and comparisons).
 
 **Grade**: 17 out of 20
 
