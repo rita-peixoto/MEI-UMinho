@@ -26,3 +26,7 @@ Repository containing all projects developed during this course.
 (16/20) []()
 
 ## Knowledge Engineering
+
+## 🎓 2nd year (2022/2023)
+
+TBA
