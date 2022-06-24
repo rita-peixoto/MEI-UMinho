@@ -1,0 +1,84 @@
+{
+      "Department": "Accounting",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2004 Charade Rd",
+            "Postal Code": "98199",
+            "City": "Seattle",
+            "State Providence": "Washington"
+      },
+      "Manager": {
+            "First Name": "Shelley",
+            "Last Name": "Higgins",
+            "Email": "SHIGGINS",
+            "Phone Number": "515.123.8080",
+            "Hire Date": "2002-06-07 00:00:00",
+            "Salary": 12008.0,
+            "Job": {
+                  "Title": "Accounting Manager",
+                  "Minimum Salary": 8200,
+                  "Maximum Salary": 16000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Accounting Manager",
+                  "Minimum Salary": 8200,
+                  "Maximum Salary": 16000,
+                  "Employees": [
+                        {
+                              "First Name": "Shelley",
+                              "Last Name": "Higgins",
+                              "Email": "SHIGGINS",
+                              "Phone Number": "515.123.8080",
+                              "Hire Date": "2002-06-07 00:00:00",
+                              "Salary": 12008.0
+                        }
+                  ]
+            },
+            {
+                  "Title": "Public Accountant",
+                  "Minimum Salary": 4200,
+                  "Maximum Salary": 9000,
+                  "Employees": [
+                        {
+                              "First Name": "William",
+                              "Last Name": "Gietz",
+                              "Email": "WGIETZ",
+                              "Phone Number": "515.123.8181",
+                              "Hire Date": "2002-06-07 00:00:00",
+                              "Salary": 8300.0
+                        }
+                  ]
+            }
+      ],
+      "Historic": [
+            {
+                  "First Name": "Neena",
+                  "Last Name": "Kochhar",
+                  "Email": "NKOCHHAR",
+                  "Phone Number": "515.123.4568",
+                  "Worked in": [
+                        {
+                              "Start Date": "1997-09-21 00:00:00",
+                              "End Date": "2001-10-27 00:00:00",
+                              "Job": {
+                                    "Title": "Public Accountant",
+                                    "Minimum Salary": 4200,
+                                    "Maximum Salary": 9000
+                              }
+                        },
+                        {
+                              "Start Date": "2001-10-28 00:00:00",
+                              "End Date": "2005-03-15 00:00:00",
+                              "Job": {
+                                    "Title": "Accounting Manager",
+                                    "Minimum Salary": 8200,
+                                    "Maximum Salary": 16000
+                              }
+                        }
+                  ]
+            }
+      ]
+}

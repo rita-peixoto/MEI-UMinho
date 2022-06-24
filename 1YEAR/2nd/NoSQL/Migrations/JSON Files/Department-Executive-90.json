@@ -1,0 +1,92 @@
+{
+      "Department": "Executive",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2004 Charade Rd",
+            "Postal Code": "98199",
+            "City": "Seattle",
+            "State Providence": "Washington"
+      },
+      "Manager": {
+            "First Name": "Steven",
+            "Last Name": "King",
+            "Email": "SKING",
+            "Phone Number": "515.123.4567",
+            "Hire Date": "2003-06-17 00:00:00",
+            "Salary": 24000.0,
+            "Job": {
+                  "Title": "President",
+                  "Minimum Salary": 20080,
+                  "Maximum Salary": 40000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "President",
+                  "Minimum Salary": 20080,
+                  "Maximum Salary": 40000,
+                  "Employees": [
+                        {
+                              "First Name": "Steven",
+                              "Last Name": "King",
+                              "Email": "SKING",
+                              "Phone Number": "515.123.4567",
+                              "Hire Date": "2003-06-17 00:00:00",
+                              "Salary": 24000.0
+                        }
+                  ]
+            },
+            {
+                  "Title": "Administration Vice President",
+                  "Minimum Salary": 15000,
+                  "Maximum Salary": 30000,
+                  "Employees": [
+                        {
+                              "First Name": "Neena",
+                              "Last Name": "Kochhar",
+                              "Email": "NKOCHHAR",
+                              "Phone Number": "515.123.4568",
+                              "Hire Date": "2005-09-21 00:00:00",
+                              "Salary": 17000.0
+                        },
+                        {
+                              "First Name": "Lex",
+                              "Last Name": "De Haan",
+                              "Email": "LDEHAAN",
+                              "Phone Number": "515.123.4569",
+                              "Hire Date": "2001-01-13 00:00:00",
+                              "Salary": 17000.0
+                        }
+                  ]
+            }
+      ],
+      "Historic": [
+            {
+                  "First Name": "Jennifer",
+                  "Last Name": "Whalen",
+                  "Email": "JWHALEN",
+                  "Phone Number": "515.123.4444",
+                  "Worked in": [
+                        {
+                              "Start Date": "1995-09-17 00:00:00",
+                              "End Date": "2001-06-17 00:00:00",
+                              "Job": {
+                                    "Title": "Administration Assistant",
+                                    "Minimum Salary": 3000,
+                                    "Maximum Salary": 6000
+                              }
+                        },
+                        {
+                              "Start Date": "2002-07-01 00:00:00",
+                              "End Date": "2006-12-31 00:00:00",
+                              "Job": {
+                                    "Title": "Public Accountant",
+                                    "Minimum Salary": 4200,
+                                    "Maximum Salary": 9000
+                              }
+                        }
+                  ]
+            }
+      ]
+}

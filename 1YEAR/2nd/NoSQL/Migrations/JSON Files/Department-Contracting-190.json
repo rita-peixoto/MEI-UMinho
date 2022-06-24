@@ -1,0 +1,11 @@
+{
+      "Department": "Contracting",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2004 Charade Rd",
+            "Postal Code": "98199",
+            "City": "Seattle",
+            "State Providence": "Washington"
+      }
+}

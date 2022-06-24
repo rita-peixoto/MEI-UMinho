@@ -1,0 +1,41 @@
+{
+      "Department": "Public Relations",
+      "Region": "Europe",
+      "Country": "Germany",
+      "Location": {
+            "Street Address": "Schwanthalerstr. 7031",
+            "Postal Code": "80925",
+            "City": "Munich",
+            "State Providence": "Bavaria"
+      },
+      "Manager": {
+            "First Name": "Hermann",
+            "Last Name": "Baer",
+            "Email": "HBAER",
+            "Phone Number": "515.123.8888",
+            "Hire Date": "2002-06-07 00:00:00",
+            "Salary": 10000.0,
+            "Job": {
+                  "Title": "Public Relations Representative",
+                  "Minimum Salary": 4500,
+                  "Maximum Salary": 10500
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Public Relations Representative",
+                  "Minimum Salary": 4500,
+                  "Maximum Salary": 10500,
+                  "Employees": [
+                        {
+                              "First Name": "Hermann",
+                              "Last Name": "Baer",
+                              "Email": "HBAER",
+                              "Phone Number": "515.123.8888",
+                              "Hire Date": "2002-06-07 00:00:00",
+                              "Salary": 10000.0
+                        }
+                  ]
+            }
+      ]
+}

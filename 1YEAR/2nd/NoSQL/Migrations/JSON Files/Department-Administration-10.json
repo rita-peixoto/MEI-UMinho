@@ -1,0 +1,41 @@
+{
+      "Department": "Administration",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2004 Charade Rd",
+            "Postal Code": "98199",
+            "City": "Seattle",
+            "State Providence": "Washington"
+      },
+      "Manager": {
+            "First Name": "Jennifer",
+            "Last Name": "Whalen",
+            "Email": "JWHALEN",
+            "Phone Number": "515.123.4444",
+            "Hire Date": "2003-09-17 00:00:00",
+            "Salary": 4400.0,
+            "Job": {
+                  "Title": "Administration Assistant",
+                  "Minimum Salary": 3000,
+                  "Maximum Salary": 6000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Administration Assistant",
+                  "Minimum Salary": 3000,
+                  "Maximum Salary": 6000,
+                  "Employees": [
+                        {
+                              "First Name": "Jennifer",
+                              "Last Name": "Whalen",
+                              "Email": "JWHALEN",
+                              "Phone Number": "515.123.4444",
+                              "Hire Date": "2003-09-17 00:00:00",
+                              "Salary": 4400.0
+                        }
+                  ]
+            }
+      ]
+}

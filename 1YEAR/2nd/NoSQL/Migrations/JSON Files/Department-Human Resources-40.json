@@ -1,0 +1,39 @@
+{
+      "Department": "Human Resources",
+      "Region": "Europe",
+      "Country": "United Kingdom",
+      "Location": {
+            "Street Address": "8204 Arthur St",
+            "City": "London"
+      },
+      "Manager": {
+            "First Name": "Susan",
+            "Last Name": "Mavris",
+            "Email": "SMAVRIS",
+            "Phone Number": "515.123.7777",
+            "Hire Date": "2002-06-07 00:00:00",
+            "Salary": 6500.0,
+            "Job": {
+                  "Title": "Human Resources Representative",
+                  "Minimum Salary": 4000,
+                  "Maximum Salary": 9000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Human Resources Representative",
+                  "Minimum Salary": 4000,
+                  "Maximum Salary": 9000,
+                  "Employees": [
+                        {
+                              "First Name": "Susan",
+                              "Last Name": "Mavris",
+                              "Email": "SMAVRIS",
+                              "Phone Number": "515.123.7777",
+                              "Hire Date": "2002-06-07 00:00:00",
+                              "Salary": 6500.0
+                        }
+                  ]
+            }
+      ]
+}

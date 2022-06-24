@@ -1,0 +1,88 @@
+{
+      "Department": "Purchasing",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2004 Charade Rd",
+            "Postal Code": "98199",
+            "City": "Seattle",
+            "State Providence": "Washington"
+      },
+      "Manager": {
+            "First Name": "Den",
+            "Last Name": "Raphaely",
+            "Email": "DRAPHEAL",
+            "Phone Number": "515.127.4561",
+            "Hire Date": "2002-12-07 00:00:00",
+            "Salary": 11000.0,
+            "Job": {
+                  "Title": "Purchasing Manager",
+                  "Minimum Salary": 8000,
+                  "Maximum Salary": 15000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Purchasing Manager",
+                  "Minimum Salary": 8000,
+                  "Maximum Salary": 15000,
+                  "Employees": [
+                        {
+                              "First Name": "Den",
+                              "Last Name": "Raphaely",
+                              "Email": "DRAPHEAL",
+                              "Phone Number": "515.127.4561",
+                              "Hire Date": "2002-12-07 00:00:00",
+                              "Salary": 11000.0
+                        }
+                  ]
+            },
+            {
+                  "Title": "Purchasing Clerk",
+                  "Minimum Salary": 2500,
+                  "Maximum Salary": 5500,
+                  "Employees": [
+                        {
+                              "First Name": "Alexander",
+                              "Last Name": "Khoo",
+                              "Email": "AKHOO",
+                              "Phone Number": "515.127.4562",
+                              "Hire Date": "2003-05-18 00:00:00",
+                              "Salary": 3100.0
+                        },
+                        {
+                              "First Name": "Shelli",
+                              "Last Name": "Baida",
+                              "Email": "SBAIDA",
+                              "Phone Number": "515.127.4563",
+                              "Hire Date": "2005-12-24 00:00:00",
+                              "Salary": 2900.0
+                        },
+                        {
+                              "First Name": "Sigal",
+                              "Last Name": "Tobias",
+                              "Email": "STOBIAS",
+                              "Phone Number": "515.127.4564",
+                              "Hire Date": "2005-07-24 00:00:00",
+                              "Salary": 2800.0
+                        },
+                        {
+                              "First Name": "Guy",
+                              "Last Name": "Himuro",
+                              "Email": "GHIMURO",
+                              "Phone Number": "515.127.4565",
+                              "Hire Date": "2006-11-15 00:00:00",
+                              "Salary": 2600.0
+                        },
+                        {
+                              "First Name": "Karen",
+                              "Last Name": "Colmenares",
+                              "Email": "KCOLMENA",
+                              "Phone Number": "515.127.4566",
+                              "Hire Date": "2007-08-10 00:00:00",
+                              "Salary": 2500.0
+                        }
+                  ]
+            }
+      ]
+}

@@ -1,0 +1,75 @@
+{
+      "Department": "Marketing",
+      "Region": "Americas",
+      "Country": "Canada",
+      "Location": {
+            "Street Address": "147 Spadina Ave",
+            "Postal Code": "M5V 2L7",
+            "City": "Toronto",
+            "State Providence": "Ontario"
+      },
+      "Manager": {
+            "First Name": "Michael",
+            "Last Name": "Hartstein",
+            "Email": "MHARTSTE",
+            "Phone Number": "515.123.5555",
+            "Hire Date": "2004-02-17 00:00:00",
+            "Salary": 13000.0,
+            "Job": {
+                  "Title": "Marketing Manager",
+                  "Minimum Salary": 9000,
+                  "Maximum Salary": 15000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Marketing Manager",
+                  "Minimum Salary": 9000,
+                  "Maximum Salary": 15000,
+                  "Employees": [
+                        {
+                              "First Name": "Michael",
+                              "Last Name": "Hartstein",
+                              "Email": "MHARTSTE",
+                              "Phone Number": "515.123.5555",
+                              "Hire Date": "2004-02-17 00:00:00",
+                              "Salary": 13000.0
+                        }
+                  ]
+            },
+            {
+                  "Title": "Marketing Representative",
+                  "Minimum Salary": 4000,
+                  "Maximum Salary": 9000,
+                  "Employees": [
+                        {
+                              "First Name": "Pat",
+                              "Last Name": "Fay",
+                              "Email": "PFAY",
+                              "Phone Number": "603.123.6666",
+                              "Hire Date": "2005-08-17 00:00:00",
+                              "Salary": 6000.0
+                        }
+                  ]
+            }
+      ],
+      "Historic": [
+            {
+                  "First Name": "Michael",
+                  "Last Name": "Hartstein",
+                  "Email": "MHARTSTE",
+                  "Phone Number": "515.123.5555",
+                  "Worked in": [
+                        {
+                              "Start Date": "2004-02-17 00:00:00",
+                              "End Date": "2007-12-19 00:00:00",
+                              "Job": {
+                                    "Title": "Marketing Representative",
+                                    "Minimum Salary": 4000,
+                                    "Maximum Salary": 9000
+                              }
+                        }
+                  ]
+            }
+      ]
+}

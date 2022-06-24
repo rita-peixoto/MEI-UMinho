@@ -1,0 +1,443 @@
+{
+      "Department": "Shipping",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2011 Interiors Blvd",
+            "Postal Code": "99236",
+            "City": "South San Francisco",
+            "State Providence": "California"
+      },
+      "Manager": {
+            "First Name": "Adam",
+            "Last Name": "Fripp",
+            "Email": "AFRIPP",
+            "Phone Number": "650.123.2234",
+            "Hire Date": "2005-04-10 00:00:00",
+            "Salary": 8200.0,
+            "Job": {
+                  "Title": "Stock Manager",
+                  "Minimum Salary": 5500,
+                  "Maximum Salary": 8500
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Stock Manager",
+                  "Minimum Salary": 5500,
+                  "Maximum Salary": 8500,
+                  "Employees": [
+                        {
+                              "First Name": "Matthew",
+                              "Last Name": "Weiss",
+                              "Email": "MWEISS",
+                              "Phone Number": "650.123.1234",
+                              "Hire Date": "2004-07-18 00:00:00",
+                              "Salary": 8000.0
+                        },
+                        {
+                              "First Name": "Adam",
+                              "Last Name": "Fripp",
+                              "Email": "AFRIPP",
+                              "Phone Number": "650.123.2234",
+                              "Hire Date": "2005-04-10 00:00:00",
+                              "Salary": 8200.0
+                        },
+                        {
+                              "First Name": "Payam",
+                              "Last Name": "Kaufling",
+                              "Email": "PKAUFLIN",
+                              "Phone Number": "650.123.3234",
+                              "Hire Date": "2003-05-01 00:00:00",
+                              "Salary": 7900.0
+                        },
+                        {
+                              "First Name": "Shanta",
+                              "Last Name": "Vollman",
+                              "Email": "SVOLLMAN",
+                              "Phone Number": "650.123.4234",
+                              "Hire Date": "2005-10-10 00:00:00",
+                              "Salary": 6500.0
+                        },
+                        {
+                              "First Name": "Kevin",
+                              "Last Name": "Mourgos",
+                              "Email": "KMOURGOS",
+                              "Phone Number": "650.123.5234",
+                              "Hire Date": "2007-11-16 00:00:00",
+                              "Salary": 5800.0
+                        }
+                  ]
+            },
+            {
+                  "Title": "Stock Clerk",
+                  "Minimum Salary": 2008,
+                  "Maximum Salary": 5000,
+                  "Employees": [
+                        {
+                              "First Name": "Julia",
+                              "Last Name": "Nayer",
+                              "Email": "JNAYER",
+                              "Phone Number": "650.124.1214",
+                              "Hire Date": "2005-07-16 00:00:00",
+                              "Salary": 3200.0
+                        },
+                        {
+                              "First Name": "Irene",
+                              "Last Name": "Mikkilineni",
+                              "Email": "IMIKKILI",
+                              "Phone Number": "650.124.1224",
+                              "Hire Date": "2006-09-28 00:00:00",
+                              "Salary": 2700.0
+                        },
+                        {
+                              "First Name": "James",
+                              "Last Name": "Landry",
+                              "Email": "JLANDRY",
+                              "Phone Number": "650.124.1334",
+                              "Hire Date": "2007-01-14 00:00:00",
+                              "Salary": 2400.0
+                        },
+                        {
+                              "First Name": "Steven",
+                              "Last Name": "Markle",
+                              "Email": "SMARKLE",
+                              "Phone Number": "650.124.1434",
+                              "Hire Date": "2008-03-08 00:00:00",
+                              "Salary": 2200.0
+                        },
+                        {
+                              "First Name": "Laura",
+                              "Last Name": "Bissot",
+                              "Email": "LBISSOT",
+                              "Phone Number": "650.124.5234",
+                              "Hire Date": "2005-08-20 00:00:00",
+                              "Salary": 3300.0
+                        },
+                        {
+                              "First Name": "Mozhe",
+                              "Last Name": "Atkinson",
+                              "Email": "MATKINSO",
+                              "Phone Number": "650.124.6234",
+                              "Hire Date": "2005-10-30 00:00:00",
+                              "Salary": 2800.0
+                        },
+                        {
+                              "First Name": "James",
+                              "Last Name": "Marlow",
+                              "Email": "JAMRLOW",
+                              "Phone Number": "650.124.7234",
+                              "Hire Date": "2005-02-16 00:00:00",
+                              "Salary": 2500.0
+                        },
+                        {
+                              "First Name": "TJ",
+                              "Last Name": "Olson",
+                              "Email": "TJOLSON",
+                              "Phone Number": "650.124.8234",
+                              "Hire Date": "2007-04-10 00:00:00",
+                              "Salary": 2100.0
+                        },
+                        {
+                              "First Name": "Jason",
+                              "Last Name": "Mallin",
+                              "Email": "JMALLIN",
+                              "Phone Number": "650.127.1934",
+                              "Hire Date": "2004-06-14 00:00:00",
+                              "Salary": 3300.0
+                        },
+                        {
+                              "First Name": "Michael",
+                              "Last Name": "Rogers",
+                              "Email": "MROGERS",
+                              "Phone Number": "650.127.1834",
+                              "Hire Date": "2006-08-26 00:00:00",
+                              "Salary": 2900.0
+                        },
+                        {
+                              "First Name": "Ki",
+                              "Last Name": "Gee",
+                              "Email": "KGEE",
+                              "Phone Number": "650.127.1734",
+                              "Hire Date": "2007-12-12 00:00:00",
+                              "Salary": 2400.0
+                        },
+                        {
+                              "First Name": "Hazel",
+                              "Last Name": "Philtanker",
+                              "Email": "HPHILTAN",
+                              "Phone Number": "650.127.1634",
+                              "Hire Date": "2008-02-06 00:00:00",
+                              "Salary": 2200.0
+                        },
+                        {
+                              "First Name": "Renske",
+                              "Last Name": "Ladwig",
+                              "Email": "RLADWIG",
+                              "Phone Number": "650.121.1234",
+                              "Hire Date": "2003-07-14 00:00:00",
+                              "Salary": 3600.0
+                        },
+                        {
+                              "First Name": "Stephen",
+                              "Last Name": "Stiles",
+                              "Email": "SSTILES",
+                              "Phone Number": "650.121.2034",
+                              "Hire Date": "2005-10-26 00:00:00",
+                              "Salary": 3200.0
+                        },
+                        {
+                              "First Name": "John",
+                              "Last Name": "Seo",
+                              "Email": "JSEO",
+                              "Phone Number": "650.121.2019",
+                              "Hire Date": "2006-02-12 00:00:00",
+                              "Salary": 2700.0
+                        },
+                        {
+                              "First Name": "Joshua",
+                              "Last Name": "Patel",
+                              "Email": "JPATEL",
+                              "Phone Number": "650.121.1834",
+                              "Hire Date": "2006-04-06 00:00:00",
+                              "Salary": 2500.0
+                        },
+                        {
+                              "First Name": "Trenna",
+                              "Last Name": "Rajs",
+                              "Email": "TRAJS",
+                              "Phone Number": "650.121.8009",
+                              "Hire Date": "2003-10-17 00:00:00",
+                              "Salary": 3500.0
+                        },
+                        {
+                              "First Name": "Curtis",
+                              "Last Name": "Davies",
+                              "Email": "CDAVIES",
+                              "Phone Number": "650.121.2994",
+                              "Hire Date": "2005-01-29 00:00:00",
+                              "Salary": 3100.0
+                        },
+                        {
+                              "First Name": "Randall",
+                              "Last Name": "Matos",
+                              "Email": "RMATOS",
+                              "Phone Number": "650.121.2874",
+                              "Hire Date": "2006-03-15 00:00:00",
+                              "Salary": 2600.0
+                        },
+                        {
+                              "First Name": "Peter",
+                              "Last Name": "Vargas",
+                              "Email": "PVARGAS",
+                              "Phone Number": "650.121.2004",
+                              "Hire Date": "2006-07-09 00:00:00",
+                              "Salary": 2500.0
+                        }
+                  ]
+            },
+            {
+                  "Title": "Shipping Clerk",
+                  "Minimum Salary": 2500,
+                  "Maximum Salary": 5500,
+                  "Employees": [
+                        {
+                              "First Name": "Winston",
+                              "Last Name": "Taylor",
+                              "Email": "WTAYLOR",
+                              "Phone Number": "650.507.9876",
+                              "Hire Date": "2006-01-24 00:00:00",
+                              "Salary": 3200.0
+                        },
+                        {
+                              "First Name": "Jean",
+                              "Last Name": "Fleaur",
+                              "Email": "JFLEAUR",
+                              "Phone Number": "650.507.9877",
+                              "Hire Date": "2006-02-23 00:00:00",
+                              "Salary": 3100.0
+                        },
+                        {
+                              "First Name": "Martha",
+                              "Last Name": "Sullivan",
+                              "Email": "MSULLIVA",
+                              "Phone Number": "650.507.9878",
+                              "Hire Date": "2007-06-21 00:00:00",
+                              "Salary": 2500.0
+                        },
+                        {
+                              "First Name": "Girard",
+                              "Last Name": "Geoni",
+                              "Email": "GGEONI",
+                              "Phone Number": "650.507.9879",
+                              "Hire Date": "2008-02-03 00:00:00",
+                              "Salary": 2800.0
+                        },
+                        {
+                              "First Name": "Nandita",
+                              "Last Name": "Sarchand",
+                              "Email": "NSARCHAN",
+                              "Phone Number": "650.509.1876",
+                              "Hire Date": "2004-01-27 00:00:00",
+                              "Salary": 4200.0
+                        },
+                        {
+                              "First Name": "Alexis",
+                              "Last Name": "Bull",
+                              "Email": "ABULL",
+                              "Phone Number": "650.509.2876",
+                              "Hire Date": "2005-02-20 00:00:00",
+                              "Salary": 4100.0
+                        },
+                        {
+                              "First Name": "Julia",
+                              "Last Name": "Dellinger",
+                              "Email": "JDELLING",
+                              "Phone Number": "650.509.3876",
+                              "Hire Date": "2006-06-24 00:00:00",
+                              "Salary": 3400.0
+                        },
+                        {
+                              "First Name": "Anthony",
+                              "Last Name": "Cabrio",
+                              "Email": "ACABRIO",
+                              "Phone Number": "650.509.4876",
+                              "Hire Date": "2007-02-07 00:00:00",
+                              "Salary": 3000.0
+                        },
+                        {
+                              "First Name": "Kelly",
+                              "Last Name": "Chung",
+                              "Email": "KCHUNG",
+                              "Phone Number": "650.505.1876",
+                              "Hire Date": "2005-06-14 00:00:00",
+                              "Salary": 3800.0
+                        },
+                        {
+                              "First Name": "Jennifer",
+                              "Last Name": "Dilly",
+                              "Email": "JDILLY",
+                              "Phone Number": "650.505.2876",
+                              "Hire Date": "2005-08-13 00:00:00",
+                              "Salary": 3600.0
+                        },
+                        {
+                              "First Name": "Timothy",
+                              "Last Name": "Gates",
+                              "Email": "TGATES",
+                              "Phone Number": "650.505.3876",
+                              "Hire Date": "2006-07-11 00:00:00",
+                              "Salary": 2900.0
+                        },
+                        {
+                              "First Name": "Randall",
+                              "Last Name": "Perkins",
+                              "Email": "RPERKINS",
+                              "Phone Number": "650.505.4876",
+                              "Hire Date": "2007-12-19 00:00:00",
+                              "Salary": 2500.0
+                        },
+                        {
+                              "First Name": "Sarah",
+                              "Last Name": "Bell",
+                              "Email": "SBELL",
+                              "Phone Number": "650.501.1876",
+                              "Hire Date": "2004-02-04 00:00:00",
+                              "Salary": 4000.0
+                        },
+                        {
+                              "First Name": "Britney",
+                              "Last Name": "Everett",
+                              "Email": "BEVERETT",
+                              "Phone Number": "650.501.2876",
+                              "Hire Date": "2005-03-03 00:00:00",
+                              "Salary": 3900.0
+                        },
+                        {
+                              "First Name": "Samuel",
+                              "Last Name": "McCain",
+                              "Email": "SMCCAIN",
+                              "Phone Number": "650.501.3876",
+                              "Hire Date": "2006-07-01 00:00:00",
+                              "Salary": 3200.0
+                        },
+                        {
+                              "First Name": "Vance",
+                              "Last Name": "Jones",
+                              "Email": "VJONES",
+                              "Phone Number": "650.501.4876",
+                              "Hire Date": "2007-03-17 00:00:00",
+                              "Salary": 2800.0
+                        },
+                        {
+                              "First Name": "Alana",
+                              "Last Name": "Walsh",
+                              "Email": "AWALSH",
+                              "Phone Number": "650.507.9811",
+                              "Hire Date": "2006-04-24 00:00:00",
+                              "Salary": 3100.0
+                        },
+                        {
+                              "First Name": "Kevin",
+                              "Last Name": "Feeney",
+                              "Email": "KFEENEY",
+                              "Phone Number": "650.507.9822",
+                              "Hire Date": "2006-05-23 00:00:00",
+                              "Salary": 3000.0
+                        },
+                        {
+                              "First Name": "Donald",
+                              "Last Name": "OConnell",
+                              "Email": "DOCONNEL",
+                              "Phone Number": "650.507.9833",
+                              "Hire Date": "2007-06-21 00:00:00",
+                              "Salary": 2600.0
+                        },
+                        {
+                              "First Name": "Douglas",
+                              "Last Name": "Grant",
+                              "Email": "DGRANT",
+                              "Phone Number": "650.507.9844",
+                              "Hire Date": "2008-01-13 00:00:00",
+                              "Salary": 2600.0
+                        }
+                  ]
+            }
+      ],
+      "Historic": [
+            {
+                  "First Name": "Den",
+                  "Last Name": "Raphaely",
+                  "Email": "DRAPHEAL",
+                  "Phone Number": "515.127.4561",
+                  "Worked in": [
+                        {
+                              "Start Date": "2006-03-24 00:00:00",
+                              "End Date": "2007-12-31 00:00:00",
+                              "Job": {
+                                    "Title": "Stock Clerk",
+                                    "Minimum Salary": 2008,
+                                    "Maximum Salary": 5000
+                              }
+                        }
+                  ]
+            },
+            {
+                  "First Name": "Payam",
+                  "Last Name": "Kaufling",
+                  "Email": "PKAUFLIN",
+                  "Phone Number": "650.123.3234",
+                  "Worked in": [
+                        {
+                              "Start Date": "2007-01-01 00:00:00",
+                              "End Date": "2007-12-31 00:00:00",
+                              "Job": {
+                                    "Title": "Stock Clerk",
+                                    "Minimum Salary": 2008,
+                                    "Maximum Salary": 5000
+                              }
+                        }
+                  ]
+            }
+      ]
+}

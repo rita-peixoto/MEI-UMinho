@@ -1,0 +1,92 @@
+{
+      "Department": "IT",
+      "Region": "Americas",
+      "Country": "United States of America",
+      "Location": {
+            "Street Address": "2014 Jabberwocky Rd",
+            "Postal Code": "26192",
+            "City": "Southlake",
+            "State Providence": "Texas"
+      },
+      "Manager": {
+            "First Name": "Alexander",
+            "Last Name": "Hunold",
+            "Email": "AHUNOLD",
+            "Phone Number": "590.423.4567",
+            "Hire Date": "2006-01-03 00:00:00",
+            "Salary": 9000.0,
+            "Job": {
+                  "Title": "Programmer",
+                  "Minimum Salary": 4000,
+                  "Maximum Salary": 10000
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Programmer",
+                  "Minimum Salary": 4000,
+                  "Maximum Salary": 10000,
+                  "Employees": [
+                        {
+                              "First Name": "Alexander",
+                              "Last Name": "Hunold",
+                              "Email": "AHUNOLD",
+                              "Phone Number": "590.423.4567",
+                              "Hire Date": "2006-01-03 00:00:00",
+                              "Salary": 9000.0
+                        },
+                        {
+                              "First Name": "Bruce",
+                              "Last Name": "Ernst",
+                              "Email": "BERNST",
+                              "Phone Number": "590.423.4568",
+                              "Hire Date": "2007-05-21 00:00:00",
+                              "Salary": 6000.0
+                        },
+                        {
+                              "First Name": "David",
+                              "Last Name": "Austin",
+                              "Email": "DAUSTIN",
+                              "Phone Number": "590.423.4569",
+                              "Hire Date": "2005-06-25 00:00:00",
+                              "Salary": 4800.0
+                        },
+                        {
+                              "First Name": "Valli",
+                              "Last Name": "Pataballa",
+                              "Email": "VPATABAL",
+                              "Phone Number": "590.423.4560",
+                              "Hire Date": "2006-02-05 00:00:00",
+                              "Salary": 4800.0
+                        },
+                        {
+                              "First Name": "Diana",
+                              "Last Name": "Lorentz",
+                              "Email": "DLORENTZ",
+                              "Phone Number": "590.423.5567",
+                              "Hire Date": "2007-02-07 00:00:00",
+                              "Salary": 4200.0
+                        }
+                  ]
+            }
+      ],
+      "Historic": [
+            {
+                  "First Name": "Lex",
+                  "Last Name": "De Haan",
+                  "Email": "LDEHAAN",
+                  "Phone Number": "515.123.4569",
+                  "Worked in": [
+                        {
+                              "Start Date": "2001-01-13 00:00:00",
+                              "End Date": "2006-07-24 00:00:00",
+                              "Job": {
+                                    "Title": "Programmer",
+                                    "Minimum Salary": 4000,
+                                    "Maximum Salary": 10000
+                              }
+                        }
+                  ]
+            }
+      ]
+}

@@ -1,0 +1,384 @@
+{
+      "Department": "Sales",
+      "Region": "Europe",
+      "Country": "United Kingdom",
+      "Location": {
+            "Street Address": "Magdalen Centre, The Oxford Science Park",
+            "Postal Code": "OX9 9ZB",
+            "City": "Oxford",
+            "State Providence": "Oxford"
+      },
+      "Manager": {
+            "First Name": "John",
+            "Last Name": "Russell",
+            "Email": "JRUSSEL",
+            "Phone Number": "011.44.1344.429268",
+            "Hire Date": "2004-10-01 00:00:00",
+            "Salary": 14000.0,
+            "Comission": 0.4,
+            "Job": {
+                  "Title": "Sales Manager",
+                  "Minimum Salary": 10000,
+                  "Maximum Salary": 20080
+            }
+      },
+      "Jobs": [
+            {
+                  "Title": "Sales Manager",
+                  "Minimum Salary": 10000,
+                  "Maximum Salary": 20080,
+                  "Employees": [
+                        {
+                              "First Name": "John",
+                              "Last Name": "Russell",
+                              "Email": "JRUSSEL",
+                              "Phone Number": "011.44.1344.429268",
+                              "Hire Date": "2004-10-01 00:00:00",
+                              "Salary": 14000.0,
+                              "Comission": 0.4
+                        },
+                        {
+                              "First Name": "Karen",
+                              "Last Name": "Partners",
+                              "Email": "KPARTNER",
+                              "Phone Number": "011.44.1344.467268",
+                              "Hire Date": "2005-01-05 00:00:00",
+                              "Salary": 13500.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "Alberto",
+                              "Last Name": "Errazuriz",
+                              "Email": "AERRAZUR",
+                              "Phone Number": "011.44.1344.429278",
+                              "Hire Date": "2005-03-10 00:00:00",
+                              "Salary": 12000.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "Gerald",
+                              "Last Name": "Cambrault",
+                              "Email": "GCAMBRAU",
+                              "Phone Number": "011.44.1344.619268",
+                              "Hire Date": "2007-10-15 00:00:00",
+                              "Salary": 11000.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "Eleni",
+                              "Last Name": "Zlotkey",
+                              "Email": "EZLOTKEY",
+                              "Phone Number": "011.44.1344.429018",
+                              "Hire Date": "2008-01-29 00:00:00",
+                              "Salary": 10500.0,
+                              "Comission": 0.2
+                        }
+                  ]
+            },
+            {
+                  "Title": "Sales Representative",
+                  "Minimum Salary": 6000,
+                  "Maximum Salary": 12008,
+                  "Employees": [
+                        {
+                              "First Name": "Peter",
+                              "Last Name": "Tucker",
+                              "Email": "PTUCKER",
+                              "Phone Number": "011.44.1344.129268",
+                              "Hire Date": "2005-01-30 00:00:00",
+                              "Salary": 10000.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "David",
+                              "Last Name": "Bernstein",
+                              "Email": "DBERNSTE",
+                              "Phone Number": "011.44.1344.345268",
+                              "Hire Date": "2005-03-24 00:00:00",
+                              "Salary": 9500.0,
+                              "Comission": 0.25
+                        },
+                        {
+                              "First Name": "Peter",
+                              "Last Name": "Hall",
+                              "Email": "PHALL",
+                              "Phone Number": "011.44.1344.478968",
+                              "Hire Date": "2005-08-20 00:00:00",
+                              "Salary": 9000.0,
+                              "Comission": 0.25
+                        },
+                        {
+                              "First Name": "Christopher",
+                              "Last Name": "Olsen",
+                              "Email": "COLSEN",
+                              "Phone Number": "011.44.1344.498718",
+                              "Hire Date": "2006-03-30 00:00:00",
+                              "Salary": 8000.0,
+                              "Comission": 0.2
+                        },
+                        {
+                              "First Name": "Nanette",
+                              "Last Name": "Cambrault",
+                              "Email": "NCAMBRAU",
+                              "Phone Number": "011.44.1344.987668",
+                              "Hire Date": "2006-12-09 00:00:00",
+                              "Salary": 7500.0,
+                              "Comission": 0.2
+                        },
+                        {
+                              "First Name": "Oliver",
+                              "Last Name": "Tuvault",
+                              "Email": "OTUVAULT",
+                              "Phone Number": "011.44.1344.486508",
+                              "Hire Date": "2007-11-23 00:00:00",
+                              "Salary": 7000.0,
+                              "Comission": 0.15
+                        },
+                        {
+                              "First Name": "Janette",
+                              "Last Name": "King",
+                              "Email": "JKING",
+                              "Phone Number": "011.44.1345.429268",
+                              "Hire Date": "2004-01-30 00:00:00",
+                              "Salary": 10000.0,
+                              "Comission": 0.35
+                        },
+                        {
+                              "First Name": "Patrick",
+                              "Last Name": "Sully",
+                              "Email": "PSULLY",
+                              "Phone Number": "011.44.1345.929268",
+                              "Hire Date": "2004-03-04 00:00:00",
+                              "Salary": 9500.0,
+                              "Comission": 0.35
+                        },
+                        {
+                              "First Name": "Allan",
+                              "Last Name": "McEwen",
+                              "Email": "AMCEWEN",
+                              "Phone Number": "011.44.1345.829268",
+                              "Hire Date": "2004-08-01 00:00:00",
+                              "Salary": 9000.0,
+                              "Comission": 0.35
+                        },
+                        {
+                              "First Name": "Lindsey",
+                              "Last Name": "Smith",
+                              "Email": "LSMITH",
+                              "Phone Number": "011.44.1345.729268",
+                              "Hire Date": "2005-03-10 00:00:00",
+                              "Salary": 8000.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "Louise",
+                              "Last Name": "Doran",
+                              "Email": "LDORAN",
+                              "Phone Number": "011.44.1345.629268",
+                              "Hire Date": "2005-12-15 00:00:00",
+                              "Salary": 7500.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "Sarath",
+                              "Last Name": "Sewall",
+                              "Email": "SSEWALL",
+                              "Phone Number": "011.44.1345.529268",
+                              "Hire Date": "2006-11-03 00:00:00",
+                              "Salary": 7000.0,
+                              "Comission": 0.25
+                        },
+                        {
+                              "First Name": "Clara",
+                              "Last Name": "Vishney",
+                              "Email": "CVISHNEY",
+                              "Phone Number": "011.44.1346.129268",
+                              "Hire Date": "2005-11-11 00:00:00",
+                              "Salary": 10500.0,
+                              "Comission": 0.25
+                        },
+                        {
+                              "First Name": "Danielle",
+                              "Last Name": "Greene",
+                              "Email": "DGREENE",
+                              "Phone Number": "011.44.1346.229268",
+                              "Hire Date": "2007-03-19 00:00:00",
+                              "Salary": 9500.0,
+                              "Comission": 0.15
+                        },
+                        {
+                              "First Name": "Mattea",
+                              "Last Name": "Marvins",
+                              "Email": "MMARVINS",
+                              "Phone Number": "011.44.1346.329268",
+                              "Hire Date": "2008-01-24 00:00:00",
+                              "Salary": 7200.0,
+                              "Comission": 0.1
+                        },
+                        {
+                              "First Name": "David",
+                              "Last Name": "Lee",
+                              "Email": "DLEE",
+                              "Phone Number": "011.44.1346.529268",
+                              "Hire Date": "2008-02-23 00:00:00",
+                              "Salary": 6800.0,
+                              "Comission": 0.1
+                        },
+                        {
+                              "First Name": "Sundar",
+                              "Last Name": "Ande",
+                              "Email": "SANDE",
+                              "Phone Number": "011.44.1346.629268",
+                              "Hire Date": "2008-03-24 00:00:00",
+                              "Salary": 6400.0,
+                              "Comission": 0.1
+                        },
+                        {
+                              "First Name": "Amit",
+                              "Last Name": "Banda",
+                              "Email": "ABANDA",
+                              "Phone Number": "011.44.1346.729268",
+                              "Hire Date": "2008-04-21 00:00:00",
+                              "Salary": 6200.0,
+                              "Comission": 0.1
+                        },
+                        {
+                              "First Name": "Lisa",
+                              "Last Name": "Ozer",
+                              "Email": "LOZER",
+                              "Phone Number": "011.44.1343.929268",
+                              "Hire Date": "2005-03-11 00:00:00",
+                              "Salary": 11500.0,
+                              "Comission": 0.25
+                        },
+                        {
+                              "First Name": "Harrison",
+                              "Last Name": "Bloom",
+                              "Email": "HBLOOM",
+                              "Phone Number": "011.44.1343.829268",
+                              "Hire Date": "2006-03-23 00:00:00",
+                              "Salary": 10000.0,
+                              "Comission": 0.2
+                        },
+                        {
+                              "First Name": "Tayler",
+                              "Last Name": "Fox",
+                              "Email": "TFOX",
+                              "Phone Number": "011.44.1343.729268",
+                              "Hire Date": "2006-01-24 00:00:00",
+                              "Salary": 9600.0,
+                              "Comission": 0.2
+                        },
+                        {
+                              "First Name": "William",
+                              "Last Name": "Smith",
+                              "Email": "WSMITH",
+                              "Phone Number": "011.44.1343.629268",
+                              "Hire Date": "2007-02-23 00:00:00",
+                              "Salary": 7400.0,
+                              "Comission": 0.15
+                        },
+                        {
+                              "First Name": "Elizabeth",
+                              "Last Name": "Bates",
+                              "Email": "EBATES",
+                              "Phone Number": "011.44.1343.529268",
+                              "Hire Date": "2007-03-24 00:00:00",
+                              "Salary": 7300.0,
+                              "Comission": 0.15
+                        },
+                        {
+                              "First Name": "Sundita",
+                              "Last Name": "Kumar",
+                              "Email": "SKUMAR",
+                              "Phone Number": "011.44.1343.329268",
+                              "Hire Date": "2008-04-21 00:00:00",
+                              "Salary": 6100.0,
+                              "Comission": 0.1
+                        },
+                        {
+                              "First Name": "Ellen",
+                              "Last Name": "Abel",
+                              "Email": "EABEL",
+                              "Phone Number": "011.44.1644.429267",
+                              "Hire Date": "2004-05-11 00:00:00",
+                              "Salary": 11000.0,
+                              "Comission": 0.3
+                        },
+                        {
+                              "First Name": "Alyssa",
+                              "Last Name": "Hutton",
+                              "Email": "AHUTTON",
+                              "Phone Number": "011.44.1644.429266",
+                              "Hire Date": "2005-03-19 00:00:00",
+                              "Salary": 8800.0,
+                              "Comission": 0.25
+                        },
+                        {
+                              "First Name": "Jonathon",
+                              "Last Name": "Taylor",
+                              "Email": "JTAYLOR",
+                              "Phone Number": "011.44.1644.429265",
+                              "Hire Date": "2006-03-24 00:00:00",
+                              "Salary": 8600.0,
+                              "Comission": 0.2
+                        },
+                        {
+                              "First Name": "Jack",
+                              "Last Name": "Livingston",
+                              "Email": "JLIVINGS",
+                              "Phone Number": "011.44.1644.429264",
+                              "Hire Date": "2006-04-23 00:00:00",
+                              "Salary": 8400.0,
+                              "Comission": 0.2
+                        },
+                        {
+                              "First Name": "Kimberely",
+                              "Last Name": "Grant",
+                              "Email": "KGRANT",
+                              "Phone Number": "011.44.1644.429263",
+                              "Hire Date": "2007-05-24 00:00:00",
+                              "Salary": 7000.0,
+                              "Comission": 0.15
+                        },
+                        {
+                              "First Name": "Charles",
+                              "Last Name": "Johnson",
+                              "Email": "CJOHNSON",
+                              "Phone Number": "011.44.1644.429262",
+                              "Hire Date": "2008-01-04 00:00:00",
+                              "Salary": 6200.0,
+                              "Comission": 0.1
+                        }
+                  ]
+            }
+      ],
+      "Historic": [
+            {
+                  "First Name": "Jonathon",
+                  "Last Name": "Taylor",
+                  "Email": "JTAYLOR",
+                  "Phone Number": "011.44.1644.429265",
+                  "Worked in": [
+                        {
+                              "Start Date": "2006-03-24 00:00:00",
+                              "End Date": "2006-12-31 00:00:00",
+                              "Job": {
+                                    "Title": "Sales Representative",
+                                    "Minimum Salary": 6000,
+                                    "Maximum Salary": 12008
+                              }
+                        },
+                        {
+                              "Start Date": "2007-01-01 00:00:00",
+                              "End Date": "2007-12-31 00:00:00",
+                              "Job": {
+                                    "Title": "Sales Manager",
+                                    "Minimum Salary": 10000,
+                                    "Maximum Salary": 20080
+                              }
+                        }
+                  ]
+            }
+      ]
+}
