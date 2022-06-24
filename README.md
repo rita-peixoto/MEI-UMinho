@@ -31,7 +31,7 @@ Repository containing all projects developed during this course.
 
 #### → Knowledge Engineering
 
-(15/20) [Data Mining]()
+(15/20) [Data Mining](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/MD)
 
 (?/20) [Inteligent Analysis of Big Data Systems]()
 
