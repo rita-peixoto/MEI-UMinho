@@ -1,12 +1,11 @@
-# Resolução do Guião 4
+# Lab 4
 
-Foi implementada a estratégia **otimista** de replicação.
+Optimistic strategy implemented.
 
----
 
-## Autores
+## Contributors
 
-| Número   | Nome             |
+| Number   | Name             |
 |----------|------------------| 
 | PG46988  | Ana Rita Peixoto | 
 | PG46525  | André Gonçalves  | 
