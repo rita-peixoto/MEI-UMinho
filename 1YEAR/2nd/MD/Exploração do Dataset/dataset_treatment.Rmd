@@ -1,0 +1,1176 @@
+---
+title: "__Exploração__ e __tratamento__ do dataset _Healthy_ _People_"
+author:
+- Filipa Pereira - PG46978
+- Luísa Carneiro - PG46983
+- Rita Peixoto - PG46988
+- Luís Pinto - PG47428
+output:
+  html_document:
+    toc: yes
+  html_notebook:
+    toc: yes
+    fig_caption: yes
+  pdf_document:
+    toc: yes
+editor_options:
+  chunk_output_type: inline
+---
+
+### Sumário
+
+No âmbito da unidade curricular de Mineração de dados, desenvolveu-se este trabalho prático que consistiu na implementação de todo o processo de **análise** e **exploração** do *dataset healthy people 2020*. Desta forma, e através de uma metodologia iterativa, começasse por efetuar a **importação** de dados e, de seguida, realizasse a sua **análise exploratória** e todo o **pré-processamento** necessário. Posto isto, são tidas em conta abordagens de ***data mining*** com a implementação e estudo de diferentes algoritmos de *Machine Learning*, sendo que estes são comparados através da \_*avaliação* da sua performance (no contexto do problema em questão). Por fim, efetua-se a **representação do conhecimento** na qual, através diversos elementos tais como gráficos ou tabelas, se visualiza os finais processados.
+
+### Dataset - Healthy People
+
+O *dataset* que será analisado ao longo deste documento, representa a evolução de métricas de saúde entre o ano que é descrito como *baseline* e o ano de 2020. Este *dataset* tem como objetivo analisar como é que métricas de saúde como por exemplo "AH-1. Adolescents receiving a wellness checkup in the past 12 months (percent, ages 10-17)" evoluíram desde do ano *baseline* (por exemplo, 2008) até ao ano 2020 utilizando como método de avaliação características da população (Sexo, Etnia, Rendimento e Localização geográfica).
+
+Por exemplo, para o primeiro registo temos que para a métrica AH-1 "Adolescents receiving a wellness checkup in the past 12 months (percent, ages 10-17)" e para a característica Sexo podemos ver que no ano da *baseline* (2008) as 68,7% das raparigas fizeram *checkups* nos últimos 12 meses, sendo este o grupo com maior percentagem. Para o ano de 2020 conseguimos ver que 83,9% dos rapazes fizeram *checkups* nos últimos 12 meses, sendo este o grupo com maior percentagem. Assim podemos ver que a disparidade da métrica entre a *baseline* e 2020 é baixa ou então não detetável.
+
+Abaixo temos a descrição que cada coluna tem no *dataset*:
+
+| Colunas                                                      | Descrição                                                                                              |
+|--------------------------|----------------------------------------------|
+| `HP2020 objective`                                           | Métrica de Saúde                                                                                       |
+| `Objective description`                                      | Descrição da métrica de saúde                                                                          |
+| `Topic area`                                                 | Área abrangente da métrica de saúde                                                                    |
+| `Population characteristic`                                  | Característica avaliada na métrica de saúde                                                            |
+| `Number of population groups`                                | Número de grupos da população associada à característica avaliada                                      |
+| `Best rate, baseline year(s)`                                | Maior taxa do valor associada à característica avaliada no ano *baseline*                              |
+| `Standard error of best rate, baseline year(s)`              | O desvio padrão da maior taxa para o ano *baseline*                                                    |
+| `Population group with the best rate, baseline year(s)`      | Grupo com maior taxa para o ano *baseline*                                                             |
+| `Average of other rates, baseline year(s)`                   | A média das taxas associadas aos restantes grupos da característica para a *baseline*                  |
+| `Standard error of average of other rates, baseline year(s)` | O desvio padrão da média das taxas associadas aos restantes grupos da característica para a *baseline* |
+| `Rate ratio, baseline year(s)`                               | A razão da taxa para a *baseline*                                                                      |
+| `Standard error of rate ratio, baseline year(s)`             | O desvio do padrão da razão da taxa para a *baseline*                                                  |
+| `Best rate, final year(s)`                                   | Maior taxa do grupo associada à característica avaliada no ano 2020                                    |
+| `Standard error of best rate, final year(s)`                 | O desvio padrão da maior taxa para o ano 2020                                                          |
+| `Population group with the best rate, final year(s)`         | Grupo da característica com maior taxa para o ano 2020                                                 |
+| `Average of other rates, final year(s)`                      | A média das taxas associadas aos restantes grupos da característica para a 2020                        |
+| `Standard error of average of other rates, final year(s)`    | O desvio padrão da média das taxas associadas aos restantes grupos da característica para a 2020       |
+| `Rate ratio, final year(s)`                                  | A razão da taxa para a 2020                                                                            |
+| `Standard error of rate ratio, final year(s)`                | O desvio do padrão da razão da taxa para a 2020                                                        |
+| `Difference in the rate ratio over time`                     | A diferença entre as razões da taxa entre a *baseline* e 2020                                          |
+| `z score of the difference`                                  | O *Z Score* da diferença entre as razões da taxa entre a baseline e 2020                               |
+| `Disparities change over time status`                        | O nível de disparidades entre *baseline* e 2020.                                                       |
+
+# Análise dos Dados
+
+## 1. Importação do *dataset*
+
+O primeiro passo da análise de dados consiste na **importação do *dataset****.* Para isso, recorreu-se à biblioteca *pandas* da linguagem *python* devido à sua simplicidade e eficiência para a importação de *datasets. O* *dataset* *Healthy People*, que foi alvo de estudo deste trabalho prático, é um documento em formato CSV que será lido e convertido num *Pandas Dataframe* tendo em conta o delimitador ";".
+
+```{python}
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import eli5
+from sklearn.model_selection import train_test_split
+from eli5.sklearn import PermutationImportance
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score
+from scipy.stats import shapiro 
+from sklearn import preprocessing
+from sklearn.decomposition import PCA, KernelPCA
+from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import cross_val_score, cross_val_predict
+from sklearn.model_selection import KFold
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import RepeatedStratifiedKFold
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.metrics import plot_confusion_matrix
+from sklearn.model_selection import validation_curve
+from sklearn.preprocessing import StandardScaler
+
+healthy_people = pd.read_csv('/home/luisa/uminho/4ano/MD/TP/HealthyPeople.csv', delimiter=";")
+
+healthy_people
+
+```
+
+## 2. Análise Exploratória
+
+De seguida, após importar o *dataset*, podemos transitar para a 2ª etapa deste trabalho, que é a análise exploratória dos dados. Aqui será pertinente observar quais os tipos de cada atributo (numérico ou categórico), qual a distribuição dos valores de cada coluna e interpretar os dados.
+
+### 2.1. Exploração dos Dados
+
+O primeiro passo e mais intuitivo é efetuar a visualização do *dataset* importado, para poder ter uma visão geral da sua estrutura e das linhas e colunas que o constituem.
+
+```{python}
+healthy_people
+```
+
+```{python}
+healthy_people.head()
+```
+
+Recorreu-se à função *describe* aplicada ao *dataframe* previamente importado, de forma a obter estatísticas genéricas relativamente ao *dataset*, como a contagem dos valores de cada atributo, média dos valores, desvio padrão, entre outros.
+
+```{python}
+
+healthy_people.describe()
+```
+
+De forma a obter uma descrição consista do *dataset*, procedeu-se à utilização da função *info*, que permite visualizar quais e quantos atributos possuem valores nulos.
+
+```{python}
+healthy_people.info()
+```
+
+Após visualizar que o número de valores não nulos varia de acordo com o atributo em questão, procuramos saber o valor concreto de valores nulos para cada atributo, recorrendo a 2 às funções *isna()* e *isnull(),* tal como é visível no código abaixo, que produzem resultados semelhantes.
+
+```{python}
+healthy_people.isna().sum()
+```
+
+```{python}
+healthy_people.isnull().sum()
+```
+
+Outra análise pertinente que consideramos foi averiguar se existem linhas duplicadas no *dataset*, para posteriormente tratamento:
+
+```{python}
+healthy_people[healthy_people.duplicated()]
+
+```
+
+De seguida, para obter uma melhor noção dos valores que podem aparecer em cada coluna/atributo do *dataset*, recorremos à função *value_counts()*, que para cada atributo efetua a contagem dos valores que nele aparecem, tal como se apresenta de seguida. Esta análise permitiu observar, para os valores categóricos, quais os diferentes valores que estes podem ter e, além disso, analisar se existem valores com o mesmo significado, que pudessem posteriormente ser substituídos.
+
+```{python}
+healthy_people["HP2020 objective"].value_counts()
+```
+
+```{python}
+healthy_people["Topic area"].value_counts()
+```
+
+```{python}
+healthy_people["Population characteristic"].value_counts()
+```
+
+```{python}
+healthy_people["Disparities change over time status"].value_counts()
+```
+
+```{python}
+healthy_people["Population group with the best rate, baseline year(s)"].value_counts()
+```
+
+```{python}
+healthy_people["Population group with the best rate, final year(s)"].value_counts()
+```
+
+Tal como foi dito em cima cada valor do *Population characteristic* está associado a valores específicos nas colunas de *Population group with the best rate, final year(s)* e *Population group with the best rate, baseline year(s).* Para isso, vamos verificar quais os possíveis valor que cada *Population characteristic* pode tomar na coluna *Population group with the best rate, final year(s),* através da função *value_counts*.
+
+```{python}
+healthy_people[healthy_people['Population characteristic'] == 'Race and ethnicity']['Population group with the best rate, final year(s)'].value_counts()
+```
+
+```{python}
+healthy_people[healthy_people['Population characteristic'] == 'Sex']['Population group with the best rate, final year(s)'].value_counts()
+```
+
+```{python}
+healthy_people[healthy_people['Population characteristic'] == 'Family income']['Population group with the best rate, final year(s)'].value_counts()
+```
+
+```{python}
+healthy_people[healthy_people['Population characteristic'] == 'Geographic location']['Population group with the best rate, final year(s)'].value_counts()
+```
+
+```{python}
+healthy_people[healthy_people['Population characteristic'] == 'Educational attainment']['Population group with the best rate, final year(s)'].value_counts()
+```
+
+```{python}
+healthy_people[healthy_people['Population characteristic'] == 'Disability status']['Population group with the best rate, final year(s)'].value_counts()
+```
+
+### 2.2. Visualização dos Dados
+
+#### 2.2.1. *Outliers*
+
+Como forma de visualizar possíveis os *outilers* nas colunas com valores numéricos, decidiu-se criar um *dataframe* - *healthy_people_outliers* - com a informação sobre as colunas que vamos analisar.
+
+```{python}
+sns.set_theme(palette="pastel")
+
+columns_object = ['HP2020 objective', 'Objective description', 'Topic area', 'Population characteristic', 'Number of population groups','Population group with the best rate, baseline year(s)', 'Population group with the best rate, final year(s)', 'Disparities change over time status']
+
+healthy_people_outliers = healthy_people.copy()
+healthy_people_outliers = healthy_people_outliers.drop(columns_object, axis=1)
+```
+
+Criamos um *boxplot* com os atributos que pretendemos analisar.
+
+```{python}
+plt.subplots(figsize=(10,5))
+sns.boxplot(data=healthy_people_outliers, orient="h")
+```
+
+Como forma de avaliar a distribuição dos *outliers* do *z score of the difference* ao longo dos valores de *Disparities Change over time,* criamos um boxplot que associa dos valores da coluna *z score of the difference* com o de *Disparities Change over time.* O mesmo acontece para avaliação da distribuição dos *outliers* do *z score of the difference* alongo do P*opulation characteristic* e a avaliação dos *outilers Best rate, final year(s)* ao longo do *Disparities change over time status.*
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.boxplot(x=healthy_people['Disparities change over time status'], y=healthy_people_outliers["z score of the difference"])
+```
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.boxplot(x=healthy_people['Population characteristic'], y=healthy_people_outliers["z score of the difference"])
+```
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.boxplot(x=healthy_people['Disparities change over time status'], y=healthy_people_outliers["Best rate, final year(s)"])
+```
+
+#### 2.2.2 Gráficos
+
+Nesta secção é apresentada um conjunto de gráficos que avaliam a distribuição dos valores para os atributos considerados importantes para o *dataset*.
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.displot(data=healthy_people, x="Best rate, baseline year(s)", kde=True)
+```
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.displot(data=healthy_people, x="Best rate, final year(s)", kde=True)
+```
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.displot(data=healthy_people, x="z score of the difference", kde=True)
+```
+
+```{python}
+plt.subplots(figsize=(14,8))
+sns.displot(data=healthy_people, x="Difference in the rate ratio over time", kde=True)
+```
+
+## 3. Pré-processamento
+
+Na etapa 3, o **pré-processamento**, iremos tratar os dados com o objetivo de melhorar a qualidade dos mesmos para as etapas seguintes, nomeadamente a mineração. O tratamento irá focar-se em lidar com registos incompletos, valores inconsistentes, valores discrepantes, entre outros. Além disso, também se foca na limpeza, transformação e redução dos dados, caso seja necessário.
+
+Desta forma, e tendo em conta a visualização acima apresentada, consideramos que o primeiro passo lógico será efetuar a renomeação das colunas do *dataset* para valores mais manuseáveis e fáceis de trabalhar, tal como está explicitado de seguida.
+
+```{python}
+
+columnsHealthy = ['HP2020', 'Description', 'Area', 'Characteristic', 'Groups', 'Best Rate Bl', 'Best Standard Error Bl', 'Best Population Bl', 'Other Rates AVG Bl', 'Other AVG Standard Error Bl', 'Rate Ratio Bl','Standard error Ration Bl', 'Best Rate Final', 'Best Standard Error Final','Best Population Final', 'Other Rates AVG Final', 'Other AVG Standard Error Final','Rate Ratio Final', 'Standard error Ration Final', 'Difference Rate Ratio','Z Score Diff', 'Disparities Change']
+
+healthy_people.columns = columnsHealthy
+```
+
+### 3.1 Remoção de colunas
+
+Começamos por eliminar as colunas que são consideradas irrelevantes para a previsão do *dataset.* Desta forma, eliminamos as colunas *Description*, *Area* e *Groups*, pois são atributos informativos que não contribuem com nenhuma informação especial para o *dataset*.
+
+```{python}
+healthy_people = healthy_people.drop(columns=['Description','Area','Groups'])
+healthy_people
+```
+
+### 3.2 Tratamento de valores em falta
+
+O *dataset* tem cerca de 740 valores em falta. Para resolver este problema vamos implementar a função *treat_missing_value* que vai a todos os atributos com valores numéricos e vai armazenar a mediana desses valores, agrupando essa mediana segundo as métricas presente na coluna *HP2020.* De seguida, vai identificar quais as medianas que estão a *null*, ou seja, significa que hão houve valores suficientes para calcular a mediana. Caso isso aconteça, então vamos eliminar os registos cujo o valor do *HP2020* está associado à mediana a *null.* Para os casos em que ainda haja valores a *null* então vamos preencher esse campo com a mediana associada ao valor do *HP2020* que esta associada ao registo.
+
+```{python}
+def treat_missing_value(healthy_people):
+    nan_values = healthy_people.isna()
+    nan_columns = nan_values.any()
+    
+    columns_with_nan = healthy_people.columns[nan_columns].tolist()
+    
+    for headers in columns_with_nan:
+    
+        typeValues = healthy_people.dtypes[headers]
+    
+        if typeValues.name != 'object':
+    
+            aux = pd.DataFrame(healthy_people.groupby('HP2020')[headers].median())
+            registers = pd.DataFrame(healthy_people.groupby('HP2020')[headers])
+    
+            columns_with_nan = aux[aux.isna().any(axis=1)]
+            c = columns_with_nan.index
+            
+            for elem in c:
+                healthy_people.drop(healthy_people[healthy_people['HP2020'] == elem].index,inplace=True)
+```
+
+Tal como podemos ver após a implementação desta função, o *dataset* final fica sem nenhum valor *null*. Esta abordagem foi utilizada, pois desta forma conseguimos tratar os valores do *dataset* segundo a métrica que está a ser avaliada .
+
+```{python}
+treat_missing_value(healthy_people)
+
+print(healthy_people.isnull().any())
+```
+
+### 3.3 One Hot Encoding
+
+Nesta secção vamos transformar os valores categóricos (*HP2020*, *Best Population Bl*, *Best Population Final*, *Characteristic*) em valores numéricos a para isso vamos utilizar a função *get_dummies*.
+
+```{python}
+columns = ["HP2020", "Best Population Bl", "Best Population Final", "Characteristic"]
+
+healthy_people = pd.get_dummies(healthy_people,columns = columns)
+
+healthy_people
+```
+
+### 3.4. Encoding Ordinal Features
+
+Nesta secção vamos transformar valores categóricos que tenham uma ordem em valores numéricos. Desta forma, temos *Decrease*: 1, *Little or no detectable change*: 2 e *Increase*: 3 como valores para o atributo *Disparities Change.*
+
+```{python}
+disparities_mapper = {'Decrease': 1, 'Little or no detectable change': 2, 'Increase': 3}
+healthy_people['Disparities Change'] = healthy_people["Disparities Change"].replace(disparities_mapper)
+print(healthy_people.isnull().any())
+```
+
+### 3.5 Normalização
+
+Para a normalização vamos utilizar o teste estatístico de *shapiro* para verificar se uma determinada coluna possui uma distribuição Gaussiana.
+
+```{python}
+def shapiro_test(data):
+    stat, p = shapiro(data)
+    print('stat=%.3f, p=%.3f' % (stat, p))
+    if p > 0.05:
+        print('Probably Gaussian')
+    else:
+        print('Probably not Gaussian')
+```
+
+Tal como podemos ver para colunas que possuíam valores dispersos e superiores a 1 foi efetuado o teste de *shapiro* para verificar se tinham uma distribuição normal. Pelo resultado a baixo podemos ver que nenhum destes atributos não possuem uma distribuição normal.
+
+```{python}
+print(shapiro_test(healthy_people["Best Rate Bl"]))
+print(shapiro_test(healthy_people["Rate Ratio Bl"]))
+print(shapiro_test(healthy_people["Best Rate Bl"]))
+```
+
+De seguida, vamos transformar os valores dos atributos numa distribuição normal através da função *MinMaxScaler*.
+
+```{python}
+scaler = preprocessing.MinMaxScaler()
+healthy_people_oficial = healthy_people.copy()
+```
+
+```{python}
+df_features = healthy_people_oficial.drop(["Disparities Change"], axis = 1)
+healthy_people_norm = pd.DataFrame(scaler.fit_transform(df_features),columns=df_features.columns.to_list())
+healthy_people_norm[["Disparities Change"]] = healthy_people_oficial[["Disparities Change"]].to_numpy()
+```
+
+Abaixo temos os *datasets* sem a normalização *healthy_people_oficial* e o *dataset* com a normalização.
+
+```{python}
+healthy_people_oficial
+```
+
+```{python}
+healthy_people_norm
+```
+
+```{python}
+lista = healthy_people_oficial.columns.to_list()
+lista.remove('Disparities Change')
+```
+
+### 3.6 PCA
+
+Para aplicar a redução de componentes através do PCA é necessário utilizar os dados normalizados.
+
+```{python}
+features = healthy_people_norm.drop("Disparities Change", axis = 1)
+target = healthy_people_norm["Disparities Change"]
+```
+
+De seguida, vamos aplicar o PCA com duas componentes no *dataset* e vamos avaliar a variância entre as duas componentes. Além disso, vamos aplicar o Kernel PCA, que é utilizado quando os dados não são linearmente separáveis, de forma a comparar os resultados obtidos neste e os resultados obtidos com o PCA.
+
+```{python}
+n = 2
+pca = PCA(n_components=n)
+#kpca = KernelPCA(kernel="rbf", gamma=15, n_components=n)
+```
+
+```{python}
+features_pca = pca.fit_transform(features)
+#features_kpca = kpca.fit_transform(features)
+```
+
+```{python}
+features_pca
+```
+
+Tal como podemos ver pela *variance ratio* a redução do *dataset* para duas componentes provoca utilizando o PCA uma variância da primeira componente de cerca de 12% e para a segunda de cerca de 9%.
+
+```{python}
+print("Variance Ratio PCA: ", pca.explained_variance_ratio_)
+print("Original number of features: ", features.shape[1])
+print("Reduced number of features: ", features_pca.shape[1])
+```
+
+```{python}
+plt.subplots(figsize=(14,8))
+plt.bar(range(n), pca.explained_variance_ratio_*100)
+plt.xticks(range(n), ['PC'+str(i) for i in range(1,n+1)])
+plt.title("Variância explicada por PC")
+plt.ylabel("Percentagem")
+plt.show()
+```
+
+## 4. Mineração de Dados
+
+### 4.1. Decision Tree
+
+Nesta secção implementam-se o algoritmo de aprendizagem supervisionada Decision Tree, sendo que para tal, utilizou-se a função *DecisionTreeClassifier()* do Python. Esta função utilizada é do tipo *classifier* visto que estamos perante um problema de classificação. Em primeiro lugar, definem-se duas variáveis, *features* e *target*, nas quais se armazenam, respetivamente, as colunas dos atributos e a coluna objetivo utilizando. É de realçar que não se efetua a normalização de dados uma vez que os algoritmos baseados em árvores não o exigem para este algoritmo.
+
+```{python}
+features = healthy_people_norm.drop("Disparities Change", axis = 1)
+target = healthy_people_norm["Disparities Change"]
+```
+
+Aqui, efetua-se a divisão dos dados em treino e teste, sendo que utiliza-se a opção *stratify* de forma a garantir que esta divisão dos dados é balanceada.
+
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.33, random_state=42, stratify=target)
+```
+
+De seguida, definem-se os dois passos do pipeline, sendo que o primeiro consiste na aplicação do PCA (no problema em questão), e o segundo passo consiste na invocação do modelo *Decision Tree*. É importante salientar que para o PCA utiliza-se n_components = 0.99 de forma a obtermos os *principal components* que expliquem 99% da variância.
+
+```{python}
+steps = [('pca', PCA(n_components=0.99)), ('m', DecisionTreeClassifier(random_state=0))]
+modelPCA = Pipeline(steps=steps)
+modelPCA.fit(X_train, y_train)
+predictionsPCA = modelPCA.predict(X_test)
+```
+
+De forma a melhor compreender o impacto da redução de dimensionalidade no problema, implementou-se o modelo *Decision Tree* **sem** se efetuar o PCA antes (contrariamente ao que foi feito na célula anterior). É de realçar que nesta secção para não se efetua a normalização de dados uma vez que os algoritmos baseados em árvores não o exigem.
+
+```{python}
+features = healthy_people_oficial.drop("Disparities Change", axis = 1)
+target = healthy_people_oficial["Disparities Change"]
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.33, random_state=42, stratify=target)
+```
+
+```{python}
+model = DecisionTreeClassifier(random_state=0)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+```
+
+#### 4.1.1. Avaliação
+
+Para avaliar o modelo da *Decision Tree com PCA* decidiu-se implementar um gráficos de barras que permite avaliar o desnível entre os valores reais e os valores previstos pelo o modelo.
+
+```{python}
+index = np.arange(3)
+bar_width = 0.35
+
+fig, ax = plt.subplots()
+pred = ax.bar(index, pd.DataFrame(predictionsPCA).value_counts().sort_index(), bar_width, label="Predictions")
+
+test = ax.bar(index+bar_width, pd.DataFrame(y_test).value_counts().sort_index(),
+                 bar_width, label="test")
+
+ax.set_xlabel('Disparities Change')
+ax.set_ylabel('Count')
+ax.set_title('Decicion Tree with PCA Analysis')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(["Decrease", "Little or no detectable change", "Increase"])
+ax.legend()
+
+plt.show()
+
+```
+
+Para avaliar o modelo da *Decision Tree sem PCA* decidiu-se implementar um gráficos de barras que permite avaliar o desnível entre os valores reais e os valores previstos pelo o modelo.
+
+```{python}
+bar_width = 0.35
+
+fig, ax = plt.subplots()
+pred = ax.bar(index, pd.DataFrame(predictions).value_counts().sort_index(), bar_width, label="Predictions")
+
+test = ax.bar(index+bar_width, pd.DataFrame(y_test).value_counts().sort_index(),
+                 bar_width, label="test")
+
+ax.set_xlabel('Disparities Change')
+ax.set_ylabel('Count')
+ax.set_title('Decision Tree Analysis')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(["Decrease", "Little or no detectable change", "Increase"])
+ax.legend()
+
+plt.show()
+
+```
+
+#### 4.1.2. Representação do Conhecimento
+
+Após a implementação do modelo podemos avaliar qual das hipóteses, *Decision Tree* com PCA ou sem PCA, é a melhor para prever a coluna dos *Disparities Change*.
+
+Para o caso do ***Decision Tree com PCA***, através do uso da biblioteca ELI5 do Python e do seu método *Permutation* Importance conseguimos perceber quais são os atributos que mais impactam o modelo. Para este caso, o *feature* com maior importância é a *Characteristic_Sex*.
+
+```{python}
+perm = PermutationImportance(modelPCA).fit(X_test, y_test)
+eli5.show_weights(perm,feature_names = lista)
+```
+
+Abaixo, encontram-se os valores da previsão e precisão do modelo obtidos através do modelo da *Decision Tree com PCA*. O *accuracy_score* avalia a precisão do modelo, o *classification_report* avalia outras métricas associadas ao resultado do modelo e o *confusion_matrix* avalia os resultados
+
+```{python}
+accuracy_score(y_test, predictionsPCA)
+```
+
+```{python}
+target_names = ['Decrease', 'No Change','Increase']
+print(classification_report(y_test, predictionsPCA, target_names=target_names))
+```
+
+```{python, include=FALSE}
+cm = confusion_matrix(y_test, predictionsPCA)
+
+ax= plt.subplot()
+sns.heatmap(cm, annot=True,cmap='Blues',fmt='g')
+plt.figure(figsize = (15,15))
+ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['Decrease', 'No Change','Increase']); ax.yaxis.set_ticklabels(['Decrease', 'No Change','Increase'])
+
+```
+
+![](images/decisionTreePCA.png)
+
+Para o caso do ***Decision Tree sem PCA***, através do uso da biblioteca ELI5 do Python e do seu método *Permutation* Importance conseguimos perceber quais são os atributos que mais impactam o modelo. Para este caso, a única *feature* com importância é a *Z Score Diff*.
+
+```{python}
+perm = PermutationImportance(model).fit(X_test, y_test)
+eli5.show_weights(perm,feature_names = lista)
+```
+
+Abaixo, encontram-se os valores da previsão e precisão do modelo obtidos através do modelo da *Decision Tree com PCA* utilizando os mesmos métodos de avaliação utilizado em cima.
+
+```{python}
+accuracy_score(y_test, predictions)
+```
+
+```{python}
+target_names = ['Decrease','No Change','Increase']
+print(classification_report(y_test, predictions, target_names=target_names))
+```
+
+```{python, include=FALSE}
+cm = confusion_matrix(y_test, predictions)
+
+ax= plt.subplot()
+sns.heatmap(cm, annot=True,cmap='Blues',fmt='g')
+plt.figure(figsize = (15,15))
+ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['Decrease', 'No Change','Increase']); ax.yaxis.set_ticklabels(['Decrease', 'No Change','Increase'])
+```
+
+![](images/decisionTree.png)
+
+Concluímos que para o modelo de Decision Tree com PCA tem pouca precisão para os casos de *Decrease* e *Increase* pois no *dataset* existem poucos valores de *decrease* e *increase* para o modelo conseguir prever bem estas classes. Relativamente ao modelo Decision Tree sem PCA, apesar dos resultados serem muito apelativos temos de ter em atenção que este modelo deve estar provavelmente a ter *overfitting*, que causado devido ao desbalançeamento das classes do target. Em adição através da análise do impacto dos atributos no modelo, podemos ver que o modelo só considera importante um atributo, pelo que não é representativo da globalidade dos atributos.
+
+### 4.2. K Nearest Neighbors
+
+Nesta secção utilizou-se o **KNeighborsClassifier** como forma de implementar o algoritmo do *K Nearest Neighbors*, para isso utilizou-se o *dataset* normalizado visto que é um algoritmo baseado em distâncias.
+
+```{python}
+features = healthy_people_norm.drop("Disparities Change", axis = 1).to_numpy()
+target = healthy_people_norm["Disparities Change"].to_numpy()
+```
+
+```{python}
+#balanceamento dos dados 
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.33, random_state=42,stratify=target)
+```
+
+```{python}
+# Create a KNN classifier
+knn = KNeighborsClassifier(n_jobs=-1)
+# Create a pipeline
+pipe = Pipeline([("knn", knn)])
+# Create space of candidate values
+search_space = [{"knn__n_neighbors": [2, 3, 4, 5, 6, 7, 8, 9, 10,15,20,30,100,250]}]
+```
+
+Utilizou-se o *Grid Search* para testar os hiperparametros do algoritmo como é o caso do número de vizinhos que devem ser selecionados para conseguirmos determinar a previsão mais frequentes.
+
+```{python}
+# Create grid search
+classifier = GridSearchCV(pipe, search_space, cv=10,scoring= 'f1_weighted', verbose=0)
+result = classifier.fit(X_train,y_train)
+predictions = result.best_estimator_.predict(X_test)
+```
+
+#### 4.2.1 Avaliação
+
+De seguida podemos observar a melhor avaliação e os hiperparâmetros que permitiram essa melhor avaliação.
+
+```{python}
+print(result.best_params_)
+print(result.best_score_)
+```
+
+Aqui implementou-se um pequeno line chart para se analisar de que forma a média do erro do modelo KNN varia com o número de vizinhos. Tal como se pode ver pelo gráfico, o valor de vizinhos que possui menor erro associado encontra-se próximo do 3, o que se assemelha com o resultado obtido anteriormente com o *GridSearch*. É de realçar que este número ótimo de vizinhos obtido no *GridSearch* e o obtido no gráfico poderá não ser exatamente o mesmo visto que ambos usam métricas de avaliação diferentes, ou seja, o *GridSearch* utiliza o *f1_weighted* (além de *cross validation*), enquanto que o line chart calcula apenas a média do erro obtido (média de casos classificados incorretamente).
+
+```{python}
+error_rates = []
+for i in np.arange(1, 30):
+
+    new_model = KNeighborsClassifier(n_neighbors = i)
+
+    new_model.fit(X_train, y_train)
+
+    new_predictions = new_model.predict(X_test)
+
+    error_rates.append(np.mean(new_predictions != y_test))
+    
+plt.plot(error_rates)
+```
+
+Para avaliar o modelo decidiu-se implementar um gráficos de barras que permite avaliar o desnível entre os valores reais e os valores previstos pelo o modelo.
+
+```{python}
+index = np.arange(3)
+bar_width = 0.35
+
+fig, ax = plt.subplots()
+pred = ax.bar(index, pd.DataFrame(predictions).value_counts().sort_index(), bar_width, label="Predictions")
+
+test = ax.bar(index+bar_width, pd.DataFrame(y_test).value_counts().sort_index(),
+                 bar_width, label="test")
+
+ax.set_xlabel('Disparities Change')
+ax.set_ylabel('Count')
+ax.set_title('KNN Analysis')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(["Decrease", "Little or no", "Increase"])
+ax.legend()
+
+plt.show()
+```
+
+#### 4.2.2 Representação do conhecimento
+
+Através do uso da biblioteca ELI5 do Python e do seu método *Permutation* Importance conseguimos perceber quais são os atributos que mais impactam o modelo. Para este caso, o *feature* com maior importância é a *Z Score Diff*.
+
+```{python}
+perm = PermutationImportance(classifier.best_estimator_).fit(X_test, y_test)
+eli5.show_weights(perm,feature_names = lista)
+```
+
+Através do *Classification Report* conseguimos inferir a qualidade das previsões do modelo de classificação e através do *accuracy_report* conseguimos determinar a precisão do modelo.
+
+```{python}
+accuracy_score(y_test, predictions)
+```
+
+```{python}
+target_names = ['Decrease', 'No Change','Increase']
+print(classification_report(y_test, predictions, target_names=target_names))
+```
+
+A Matriz de Confusão permite analisar e sumariar a performance do nosso algoritmo.
+
+```{python, include=FALSE}
+cm = confusion_matrix(y_test, predictions)
+
+ax= plt.subplot()
+sns.heatmap(cm, annot=True,cmap='Blues',fmt='g')
+plt.figure(figsize = (15,15))
+ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['Decrease', 'No Change','Increase']); ax.yaxis.set_ticklabels(['Decrease', 'No Change','Increase'])
+```
+
+![](images/KNN.png)
+
+### 4.3. Naive Bayes
+
+Ao longo desta secção foi implementado o algoritmo de aprendizagem supervisionada **Naive Bayes**, sendo que para tal utilizou-se a função ***GausssianNB*****()** disponibilizada pelo Python. Para isso utiliza-se o dataset sem a normalização, pois é um algoritmo que não necessita de *feature scaling*. Além isto, este algoritmo foi usado em paralelo com o ***Repeated*** k-fold ***cross***-***validation.***
+
+```{python}
+features = healthy_people_oficial.drop("Disparities Change", axis = 1)
+target = healthy_people_oficial["Disparities Change"]
+```
+
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(features, target,  test_size=0.33, random_state=42,stratify= target)
+```
+
+Neste passo implementam-se o ***Repeated*** k-fold ***cross***-***validation*** que***,***tal como o próprio nome indica, consiste em repetir várias vezes a o processo de validação cruzada, sendo que após cada iteração deste **cross validation** uma métrica de avaliação (como a accuracy ou o RMSE) é calculada. Esta metodologia permite obter uma visão mais realista da performance do modelo desenvolvido. De seguida, efetua-se o *tuning* de hiperparâmetros do modelo através do GridSearchCV. Neste caso em concreto, o hiperparâmetro otimizado é o ***var_smoothing*** que consiste em adicionar um valor à distribuição da variância de forma a suavizar a sua curva.
+
+```{python}
+cv_method = RepeatedStratifiedKFold(n_splits=5,  n_repeats=4, random_state=42)
+
+params_NB = {'var_smoothing': np.logspace(0, -9, num=100) }
+
+gs_NB = GridSearchCV(estimator=GaussianNB(), param_grid=params_NB, cv=cv_method,verbose=1,scoring='f1_weighted')
+result = gs_NB.fit(X_train, y_train)
+predictionsNB = gs_NB.predict(X_test)
+```
+
+#### 4.3.1. Avaliação
+
+Tendo-se aplicado o GridSearch para o processo de ***tuning***, podemos observar que o melhor valor de *f1_weighted* obtido foi 0.8189 e que ocorre quando o hiperparâmetro var_smoothing é igual a 1.
+
+```{python}
+print(gs_NB.best_params_)
+print(gs_NB.best_score_)
+```
+
+Para avaliar o modelo decidiu-se implementar um gráficos de barras que permite avaliar o desnível entre os valores reais e os valores previstos pelo o modelo.
+
+```{python}
+
+aux = pd.DataFrame(predictionsNB).value_counts()
+aux.loc[3] = 0
+aux.loc[1] = 0
+aux
+
+index = np.arange(3)
+bar_width = 0.35
+
+fig, ax = plt.subplots()
+pred = ax.bar(index, aux.sort_index(), bar_width, label="Predictions")
+
+test = ax.bar(index+bar_width, pd.DataFrame(y_test).value_counts().sort_index(),
+                 bar_width, label="Test")
+
+ax.set_xlabel('Disparities Change')
+ax.set_ylabel('Count')
+ax.set_title('Naive Bayes Analysis')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(["Decrease", "Little or no", "Increase"])
+ax.legend()
+
+plt.show()
+```
+
+#### 4.3.2. Representação do Conhecimento
+
+Através do uso da biblioteca ELI5 do Python e do seu método **Permutation Importance** conseguimos perceber quais são os atributos que mais impactam o modelo. Neste caso, a feature com maior importância é a *Best Population Final Female.*
+
+```{python}
+perm = PermutationImportance(model).fit(X_test, y_test)
+eli5.show_weights(perm,feature_names = lista)
+```
+
+Com a **matriz de confusão** e com os **classification reports** pode-se observar, através dos valores das diversas métricas de avaliação, que o modelo *Naive Bayes* possui uma boa performance.
+
+```{python}
+accuracy_score(y_test, predictionsNB)
+```
+
+```{python}
+target_names = ['Decrease', 'No Change','Increase']
+print(classification_report(y_test, predictionsNB, target_names=target_names))
+```
+
+```{python, include=FALSE}
+cm = confusion_matrix(y_test, predictionsNB)
+
+ax= plt.subplot()
+sns.heatmap(cm, annot=True,cmap='Blues',fmt='g')
+plt.figure(figsize = (15,15))
+ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['Decrease', 'No Change','Increase']); ax.yaxis.set_ticklabels(['Decrease', 'No Change','Increase'])
+
+```
+
+![](images/Screenshot%20from%202022-06-10%2015-01-06.png)
+
+### 4.4. K-Means - Cluster
+
+O primeiro passo deverá ser separar o *target* do *dataset* do resto dos atributos, tal como apresentado abaixo.
+
+```{python}
+features = healthy_people_norm.drop("Disparities Change", axis = 1).to_numpy()
+target = healthy_people_norm["Disparities Change"].to_numpy()
+```
+
+De seguida, podemos aplicar o algoritmo *KMeans,* recorrendo a 3 *clusters* e considerando um máximo de iterações igual a 1000.
+
+```{python}
+k=3
+kmeans_healthy = KMeans(n_clusters=k, max_iter=1000)
+kmeans_healthy.fit(features)
+labels = kmeans_healthy.labels_
+centroids = kmeans_healthy.cluster_centers_
+
+pd.crosstab(labels, target, rownames=['clusters'])
+```
+
+#### 4.4.1. Avaliação
+
+Podemos também avaliar o modelo desenvolvido através da visualização do número de iterações necessário para levar à convergência do modelo.
+
+```{python}
+# The number of iterations required to converge
+i = kmeans_healthy.n_iter_
+print ("The number of iterations required to converge: "+ str(i))
+```
+
+No gráfico abaixo podemos ver que à medida que o número de *clusters* aumenta a soma dos erros quadrados tende a diminuir. Para além disso, a *silhouette* avalia o nível de semelhança entre *clusters*, isto é, quanto mais próximo de 1 mais semelhantes os valores dentro dos clusters são. Desta forma, para o 2 *clusters* mais semelhantes serão só valores dentro destes clusters, para o nosso dataset.
+
+```{python}
+from sklearn.metrics import  silhouette_score
+
+range_n_clusters = [2,3,4,5,6,7,8,9,10]
+elbow = []
+ss = []
+for n_clusters in range_n_clusters:
+   #iterating through cluster sizes
+   clusterer = KMeans(n_clusters = n_clusters, random_state=42)
+   cluster_labels = clusterer.fit_predict(healthy_people)
+   #Finding the average silhouette score
+   silhouette_avg = silhouette_score(healthy_people, cluster_labels)
+   ss.append(silhouette_avg)
+   print("For n_clusters =", n_clusters,"The average silhouette_score is :", silhouette_avg)
+   #Finding the average SSE"
+   elbow.append(clusterer.inertia_) # Inertia: Sum of distances of samples to their closest cluster center
+fig = plt.figure(figsize=(14,7))
+fig.add_subplot(121)
+plt.plot(range_n_clusters, elbow,'b-',label='Sum of squared error')
+plt.xlabel("Number of cluster")
+plt.ylabel("SSE")
+plt.legend()
+fig.add_subplot(122)
+plt.plot(range_n_clusters, ss,'b-',label='Silhouette Score')
+plt.xlabel("Number of cluster")
+plt.ylabel("Silhouette Score")
+plt.legend()
+plt.show()
+```
+
+Neste gráfico podemos ver a distribuição dos valores ao longo dos clusters. Desta forma temos 58% dos registo estão no clusters 1, 17% no clusters 0, 25% no clusters 2.
+
+```{python}
+healthy_people_aux = healthy_people.copy()
+labels_aux = pd.DataFrame(labels)
+healthy_people_aux['labels']= labels_aux[0]
+healthy_people_aux
+
+# Visualizar a quantidade de valores do dataset presentes em cada cluster
+healthy_people_aux.groupby("labels").sum().plot(
+    kind='pie', y='Disparities Change',
+    colors = ['red', 'pink', 'steelblue'],
+    autopct='%1.0f%%')
+```
+
+#### 4.4.2. Representação do Conhecimento
+
+De forma a visualizar a distribuição dos valores pelos *clusters* criados, podemos obter a visualização gráfica dos resultados do algoritmo.
+
+```{python}
+for i in range(k):
+    # select only data observations with cluster label == i
+    ds = features[np.where(labels==i)]
+    # plot the data observations (only 2 first colums)
+    plt.plot(ds[:,0],ds[:,1],'o')
+    # plot the centroids
+    lines = plt.plot(centroids[i,0],centroids[i,1],'kx')
+    # make the centroid x's bigger
+    plt.setp(lines,ms=10.0)    # x size 
+    plt.setp(lines,mew=2.0)    #grossura da linha
+    
+plt.title("KMeans")
+plt.show()
+```
+
+### 4.5. Cluster Hierárquico - Cluster
+
+O primeiro passo deverá ser separar o *target* do *dataset* do resto dos atributos, tal como apresentado abaixo. De seguida, vamos aplicar o *cluster* hierárquico utilizando a distância single, que mede a distância entre 2 *clusters* é a menor distância entre pares de elementos dos dois *clusters.*
+
+```{python}
+features = healthy_people_norm.drop("Disparities Change", axis = 1).to_numpy()
+target = healthy_people_norm["Disparities Change"].to_numpy()
+```
+
+```{python}
+sns.set_theme(palette="dark")
+
+Z = linkage(features, method='single', metric='euclidean')
+```
+
+#### 4.5.1 Avaliação e Representação do Conhecimento
+
+Além disso, também consideramos conveniente visualizar o diagrama obtido por *cluster* hierárquico, apresentado abaixo:
+
+```{python, include=FALSE}
+# calculate full dendrogram
+plt.figure(figsize=(100, 100))
+dendrogram(
+    Z,
+    labels=list(target),
+    leaf_rotation=90.,  # rotates the x axis labels
+    leaf_font_size=8.,  # font size for the x axis labels
+)
+```
+
+```{python}
+plt.title('Hierarchical Clustering Dendrogram')
+plt.ylabel('distance')
+
+# Assignment of colors to labels: 'a' is red, 'b' is green, etc.
+label_colors = {'1': 'r', '2': 'g', '3': 'b'}
+ax = plt.gca()
+xlbls = ax.get_xmajorticklabels()
+for lbl in xlbls:
+    lbl.set_color(label_colors[lbl.get_text()])
+
+plt.show()
+```
+
+### 4.6. Gradient Boosting - Ensemble Boosting
+
+Ao longo desta secção foi implementado o algoritmo de aprendizagem supervisionada **Gradient Boosting**, sendo que para tal utilizou-se a função ***GradientBoostingClassifier()*** disponibilizada pelo Python. Neste algoritmo é utilizado o *dataset* não normalizado, pois utiliza árvores na sua implementação e por isso não é baseado em distâncias É de realçar que o algoritmo selecionado é do tipo *classifier* visto que o problema em questão é de classificação.
+
+```{python}
+features = healthy_people_oficial.drop("Disparities Change", axis = 1)
+target = healthy_people_oficial["Disparities Change"]
+```
+
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(features, target,  test_size=0.33, random_state=42,stratify= target)
+```
+
+Aqui efetua-se o *tuning* de hiperparâmetros do modelo através do GridSearchCV. Neste caso otimiza-se o **learning rate**(indica o quão rápido o modelo aprende), **max depth** (profundidade máxima de cada estimador) e **n_estimators** (número de árvores na floresta).
+
+```{python}
+parametersGB = {
+    "learning_rate": [0.075, 0.1, 0.5, 0.75, 1],
+    "max_depth":[5,10,15],
+    "n_estimators":[10,20,30]
+    }
+
+clf = GridSearchCV(estimator = GradientBoostingClassifier(), param_grid = parametersGB, cv=5,verbose=1, scoring='f1_weighted')
+
+result = clf.fit(X_train, y_train)
+```
+
+```{python}
+predictions = result.best_estimator_.predict(X_test)
+```
+
+#### 4.6.1. Avaliação
+
+Tendo-se aplicado o GridSearch para o processo de ***tuning***, podemos observar que o melhor valor de *f1_weighted* obtido foi 0.99 e que ocorre quando o hiperparâmetro learning rate é igual a 0.075, o max_depth igual a 5 e o n_estimators igual a 10.
+
+```{python}
+print(result.best_score_)
+print(result.best_params_)
+```
+
+Para avaliar o modelo decidiu-se implementar um gráficos de barras que permite avaliar o desnível entre os valores reais e os valores previstos pelo o modelo.
+
+```{python}
+index = np.arange(3)
+bar_width = 0.35
+
+fig, ax = plt.subplots()
+pred = ax.bar(index, pd.DataFrame(predictions).value_counts().sort_index(), bar_width, label="Predictions")
+
+test = ax.bar(index+bar_width, pd.DataFrame(y_test).value_counts().sort_index(),
+                 bar_width, label="test")
+
+ax.set_xlabel('Disparities Change')
+ax.set_ylabel('Count')
+ax.set_title('Gradient Boosting Analysis')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(["Decrease", "Little or no", "Increase"])
+ax.legend()
+
+plt.show()
+```
+
+#### 4.6.2. Representação do Conhecimento
+
+Através do uso da biblioteca ELI5 do Python e do seu método **Permutation Importance** conseguimos perceber quais são os atributos que mais impactam o modelo. Neste caso, a feature com maior importância é a *Z Score Diff.*
+
+```{python}
+perm = PermutationImportance(model).fit(X_test, y_test)
+eli5.show_weights(perm,feature_names = lista)
+```
+
+Com a matriz de confusão e com os *classification reports* pode-se observar, através dos valores das diversas métricas de avaliação, que o modelo *Gradient Boosting* apresenta uma performance excelente e é aproximadamente 1. No entanto, isto poderá ser um sinal de *overfitting* provocado pelo desbalançeamento de dados presente no *dataset* original.
+
+```{python}
+accuracy_score(y_test, predictions)
+```
+
+```{python}
+target_names = ['Decrease', 'No Change','Increase']
+print(classification_report(y_test, predictions, target_names=target_names))
+```
+
+```{python, include=FALSE}
+cm = confusion_matrix(y_test, predictions)
+
+ax= plt.subplot()
+sns.heatmap(cm, annot=True,cmap='Blues',fmt='g')
+plt.figure(figsize = (15,15))
+ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['Decrease', 'No Change','Increase']); ax.yaxis.set_ticklabels(['Decrease', 'No Change','Increase'])
+```
+
+![](images/MATRIX.png)
+
+### 4.7. Random Forest - Ensemble Bagging
+
+Outro algoritmo que consideramos pertinente utilizar de forma a prever o modelo foi o algoritmo *Random Forest* que é um algoritmo da categoria *Ensemble Bagging.*
+
+Começa-se pelo mesmo procedimento adotado nos algoritmos anteriores, que é separar o *target* dos diferentes atributos do *dataset*. Para isso utilizou-se o *dataset* sem normalização, pois as *decision trees* não utilizam distâncias.
+
+```{python}
+features = healthy_people_oficial.drop("Disparities Change", axis = 1).to_numpy()
+target = healthy_people_oficial["Disparities Change"].to_numpy()
+```
+
+De seguida procede-se à divisão do *dataset* em treino e teste, para poder treinar o modelo e efetuar previsões.
+
+```{python}
+X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.33, random_state=42)
+```
+
+Recorre-se posteriormente ao *GridSearch* para estimar quais os melhores valores para os parâmetros *n_estimators* e *max_features*, como forma de potencializar a eficiência do algoritmo *RandomForestClassifier*.
+
+```{python}
+# define search space
+space = dict()
+space['n_estimators'] = [10,100,150,250,500]
+space['max_features'] = [2, 4, 6,10,20,40,60]
+
+# define the model
+random_forest = RandomForestClassifier(random_state=42)
+
+# configure the cross-validation procedure
+cv_outer = KFold(n_splits=10, shuffle=True, random_state=42)
+# configure the cross-validation procedure
+cv_inner = KFold(n_splits=3, shuffle=True, random_state=42)
+
+# define search
+search = GridSearchCV(random_forest, space, scoring='accuracy', n_jobs=1, cv=cv_inner, refit=True)
+```
+
+Para efetuar a previsão, recorreu-se ao *cross_val_predict,* que utiliza a técnica de *nested cross-validation* para efetuar uma previsão mais precisa dos resultados.
+
+```{python}
+# execute the nested cross-validation
+scores = cross_val_predict(search, features, target , cv=cv_outer)
+```
+
+#### 4.7.1. Avaliação
+
+Para avaliar o modelo decidiu-se implementar um gráficos de barras que permite avaliar o desnível entre os valores reais e os valores previstos pelo o modelo.
+
+```{python}
+index = np.arange(3)
+bar_width = 0.35
+
+fig, ax = plt.subplots()
+pred = ax.bar(index, pd.DataFrame(scores).value_counts().sort_index(), bar_width, label="Predictions")
+
+test = ax.bar(index+bar_width, pd.DataFrame(target).value_counts().sort_index(),
+                 bar_width, label="test")
+
+ax.set_xlabel('Disparities Change')
+ax.set_ylabel('Count')
+ax.set_title('Random Forest Analysis')
+ax.set_xticks(index + bar_width / 2)
+ax.set_xticklabels(["Decrease", "Little or no", "Increase"])
+ax.legend()
+
+plt.show()
+```
+
+No gráfico baixo podemos ver que se for utilizado o método de *test_split* para o treino do modelo, quando o número de árvores da *random forest* são maiores que 10 o nosso modelo tende a estabilizar, ou seja, mesmo que ao modelo do *random forest* fosse aplicado mais árvores estas não iam contribuir com o aumento da precisão. Desta forma, o melhor valor para o número de árvores a utilizar neste método é esta entre 5 e 10.
+
+```{python}
+scaler = StandardScaler()
+param_range = np.arange(1, 50, 1)
+train_scores, test_scores = validation_curve(
+  # Classifier
+  RandomForestClassifier(),
+  # Feature matrix
+  features,
+  # Target vector
+  target,
+  # Hyperparameter to examine
+  param_name="n_estimators",
+  # Range of hyperparameter's values
+  param_range = param_range,
+  # Number of folds
+  cv=3,
+  # Performance metric
+  scoring="accuracy",
+  # Use all computer cores
+  n_jobs=-1)
+# Calculate mean and standard deviation for training set scores
+train_mean = np.mean(train_scores, axis=1)
+train_std = np.std(train_scores, axis=1)
+# Calculate mean and standard deviation for test set scores
+test_mean = np.mean(test_scores, axis=1)
+test_std = np.std(test_scores, axis=1)
+# Plot mean accuracy scores for training and test sets
+plt.plot(param_range, train_mean, label="Training score", color="black")
+plt.plot(param_range, test_mean, label="Cross-validation score", color="dimgrey")
+# Plot accurancy bands for training and test sets
+plt.fill_between(param_range, train_mean - train_std,
+  train_mean + train_std, color="gray")
+plt.fill_between(param_range, test_mean - test_std,
+  test_mean + test_std, color="gainsboro")
+# Create plot
+plt.title("Validation Curve With random forest")
+plt.xlabel("Number Of trees")
+plt.ylabel("Accuracy Score")
+plt.tight_layout()
+plt.legend(loc="best")
+plt.show()
+```
+
+#### 4.7.2. Representação do Conhecimento
+
+Utilizou-se a precisão com métrica para avaliar o resultado do modelo
+
+```{python}
+# report performance
+accuracy_score(target, scores)
+```
+
+Para esta etapa e de forma a visualizar os dados obtidos por este modelo, procede-se à visualização dos resultados através do relatório de classificação (*precision, recall, f1-score, support*) e através da matriz de confusão.
+
+```{python}
+target_names = ['Decrease', 'No Change','Increase']
+print(classification_report(y_test, predictions, target_names=target_names))
+```
+
+```{python, include=FALSE}
+cm = confusion_matrix(target, scores)
+
+ax= plt.subplot()
+sns.heatmap(cm, annot=True,cmap='Blues',fmt='g')
+plt.figure(figsize = (15,15))
+ax.set_xlabel('Predicted labels');ax.set_ylabel('True labels')
+ax.set_title('Confusion Matrix')
+ax.xaxis.set_ticklabels(['Decrease', 'No Change','Increase']); ax.yaxis.set_ticklabels(['Decrease', 'No Change','Increase'])
+```
+
+![](images/RANDOM.png)
