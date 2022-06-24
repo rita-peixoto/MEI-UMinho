@@ -25,9 +25,9 @@ Repository containing all projects developed during this course.
 
 (20/20, 20/20, ?/20) [Fault Tolerance](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/TF)
 
-(?/20) [Large Scale Distributed Systems](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/SDGE-PSD)
+(17/20) [Large Scale Distributed Systems](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/SDGE-PSD)
 
-(?/20) [Distributed Systems Paradigms](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/SDGE-PSD)
+(17/20) [Distributed Systems Paradigms](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/SDGE-PSD)
 
 #### → Knowledge Engineering
 
