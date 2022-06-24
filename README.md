@@ -35,7 +35,7 @@ Repository containing all projects developed during this course.
 
 (?/20) [Inteligent Analysis of Big Data Systems]()
 
-(?/20) [NoSQL Databases]()
+(?/20) [NoSQL Databases](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/NoSQL)
 
 ## 🎓 2nd year (2022/2023)
 
