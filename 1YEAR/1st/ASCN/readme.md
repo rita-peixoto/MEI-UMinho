@@ -1,4 +1,4 @@
-###  Cloud Computing 
+###  Cloud Computing Services and Applications
 
 Information about this subject: https://tinyurl.com/ascn21
 
