@@ -8,7 +8,7 @@ Repository containing all projects developed during this course.
 ### 1st semester
 (18/20) [Formal Methods in Software Engineering](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/1st/MFES)
 
-(15/20) [Cloud Computing](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/1st/ASCN)
+(15/20) [Cloud Computing Services and Applications](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/1st/ASCN)
 
 (17/20) [Data and Machine Learning](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/1st/DAA)
 
