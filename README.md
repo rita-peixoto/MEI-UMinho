@@ -23,7 +23,7 @@ Repository containing all projects developed during this course.
 
 #### → Distributed Systems
 
-(20/20, 20/20, ?/20) [Fault Tolerance](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/TF)
+(20/20, 20/20, 20/20) [Fault Tolerance](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/TF)
 
 (17/20) [Large Scale Distributed Systems](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/SDGE-PSD)
 
@@ -33,9 +33,9 @@ Repository containing all projects developed during this course.
 
 (15/20) [Data Mining](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/MD)
 
-(?/20) [Intelligent Analysis of Big Data Systems]()
+(19/20) [Intelligent Analysis of Big Data Systems]()
 
-(?/20) [NoSQL Databases](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/NoSQL)
+(16/20) [NoSQL Databases](https://github.com/rita-peixoto/MEI-UMinho/tree/main/1YEAR/2nd/NoSQL)
 
 ## 🎓 2nd year (2022/2023)
 
