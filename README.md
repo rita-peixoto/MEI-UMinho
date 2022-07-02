@@ -1,7 +1,7 @@
 # Software Engineering Master's Degree
 📍 [University of Minho](https://www.uminho.pt/EN)
 
-Repository containing all projects developed during this course.
+Repository containing all projects developed during **masters** course.
 
 ## 🎓 1st year (2021/2022)
 
